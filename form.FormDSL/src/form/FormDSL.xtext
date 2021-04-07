@@ -1,0 +1,9 @@
+grammar form.FormDSL with org.eclipse.xtext.common.Terminals
+
+generate formDSL "http://www.FormDSL.form"
+
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';
