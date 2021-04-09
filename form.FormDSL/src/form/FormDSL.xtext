@@ -9,12 +9,17 @@ Form:
 Input:
 	type = Type
 	name = Name
-	(expression = Expression)?
+	expression += Expression*
 	;
 
 Type:
-	text="shortText" | text="date" | text="number" | 
-	text="money" | text="email" | text="longText" | text="stringNumber"
+	{ShortText} text="shortText" | 
+	{Generic} text="date" | 
+	{Generic} text="number" | 
+	{Money} text="money" | 
+	{Generic} text="email" | 
+	{LongText} text="longText" | 
+	{StringNumber} text="stringNumber"
 ;
 
 Name: 
@@ -22,5 +27,18 @@ Name:
 ;
 
 Expression:
-	text="optional" | text="focus" | text="require"
+	text="optional" | text="focus" | Exp
+;
+
+Exp:
+	(text="is" | text="length") comp=Comparison value=INT 
+;
+
+Comparison:
+	"<" {LessThan} | 
+	">" {GreaterThan} | 
+	"<=" {GreaterThaninclusive} | 
+	">=" {LessThanInclusive} | 
+	"==" {Exactly} | 
+	"!=" {Not}
 ;

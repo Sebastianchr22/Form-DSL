@@ -8,8 +8,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="Input">
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//Type" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="#//Name" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//Expression"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" upperBound="-1"
+        eType="#//Expression" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Type">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -20,4 +20,21 @@
   <eClassifiers xsi:type="ecore:EClass" name="Expression">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Exp" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="comp" eType="#//Comparison"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Comparison"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ShortText" eSuperTypes="#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Generic" eSuperTypes="#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Money" eSuperTypes="#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LongText" eSuperTypes="#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StringNumber" eSuperTypes="#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LessThan" eSuperTypes="#//Comparison"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GreaterThan" eSuperTypes="#//Comparison"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GreaterThaninclusive" eSuperTypes="#//Comparison"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LessThanInclusive" eSuperTypes="#//Comparison"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Exactly" eSuperTypes="#//Comparison"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Not" eSuperTypes="#//Comparison"/>
 </ecore:EPackage>
