@@ -37,21 +37,21 @@ class FormDSLGenerator extends AbstractGenerator {
 		'''
 			<label class="form-label">«input.name.compute»:</label>
 			«compute(input.type, input.name)»
-			<br>
 		'''
 	}
 
+	var formClass = "form-control form-control-sm"
 	def dispatch CharSequence compute(Generic type, Name name){
-		'''<input class="form-control" type="«type.text»" name="«name»" placeholder="«name.text»">'''
+		'''<input class="«formClass»" type="«type.text»" name="«name»" placeholder="«name.text»">'''
 	}
 	def dispatch CharSequence compute(LongText type, Name name){
-		'''<textarea class="form-control" name="«name»" rows="8" cols="50" placeholder="«name.text»"></textarea>'''
+		'''<textarea class="«formClass»" name="«name»" rows="8" cols="50" placeholder="«name.text»"></textarea>'''
 	}
 	def dispatch CharSequence compute(Money type, Name name){
-		'''<input class="form-control" type="number" min="0.00" max="10000.00" step="0.01" placeholder="0.00" name="«name»">'''
+		'''<input class="«formClass»" type="number" min="0.00" max="10000.00" step="0.01" placeholder="0.00" name="«name»">'''
 	}
 	def dispatch CharSequence compute(ShortText type, Name name){
-		'''<input class="form-control" type="text" name="«name»" placeholder="«name.text»">'''
+		'''<input class="«formClass»" type="text" name="«name»" placeholder="«name.text»">'''
 	}
 	def dispatch CharSequence compute(StringNumber type, Name name){
 		''''''
@@ -72,13 +72,11 @@ class FormDSLGenerator extends AbstractGenerator {
 			«startHTML()»
 			
 			<form>
-				<div class="mb-3">
-					«FOR input : form.content»
-						«input.compute»
-						<br>
-					«ENDFOR»
-					<input type="submit" class="btn btn-primary" value="submit" onClick="submitHandler()">
-				</div>
+				«FOR input : form.content»
+					«input.compute»
+				«ENDFOR»
+				<br>
+				<input type="submit" class="btn btn-primary" value="Submit" onClick="submitHandler()">
 			</form>
 			
 			«form.compilejs»
@@ -107,20 +105,27 @@ class FormDSLGenerator extends AbstractGenerator {
 		<!DOCTYPE html>
 		<html>
 			<head>
+			<style>
+			input{
+				height:45px;
+				width:100%;
+			}
+			</style>
 			<title>Form page demo</title>
 			
 			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 			
 			</head>
-		<body>
+		<body style="background-color:#FEFEFE">
 		    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-		
+			<div style="margin:0 auto; width: 38%; background-color:#FFF; padding:5%; padding-top:6%">
 		'''
 	}
 	
 	def CharSequence endHTML(){
 		'''
+			</div>
 		</body>
 		</html>
 		'''

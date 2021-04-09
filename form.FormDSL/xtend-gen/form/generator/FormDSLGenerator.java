@@ -52,16 +52,18 @@ public class FormDSLGenerator extends AbstractGenerator {
       CharSequence _compute_1 = this.compute(input.getType(), input.getName());
       _builder.append(_compute_1);
       _builder.newLineIfNotEmpty();
-      _builder.append("<br>");
-      _builder.newLine();
       _xblockexpression = _builder;
     }
     return _xblockexpression;
   }
   
+  private String formClass = "form-control form-control-sm";
+  
   protected CharSequence _compute(final Generic type, final Name name) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<input class=\"form-control\" type=\"");
+    _builder.append("<input class=\"");
+    _builder.append(this.formClass);
+    _builder.append("\" type=\"");
     String _text = type.getText();
     _builder.append(_text);
     _builder.append("\" name=\"");
@@ -75,7 +77,9 @@ public class FormDSLGenerator extends AbstractGenerator {
   
   protected CharSequence _compute(final LongText type, final Name name) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<textarea class=\"form-control\" name=\"");
+    _builder.append("<textarea class=\"");
+    _builder.append(this.formClass);
+    _builder.append("\" name=\"");
     _builder.append(name);
     _builder.append("\" rows=\"8\" cols=\"50\" placeholder=\"");
     String _text = name.getText();
@@ -86,7 +90,9 @@ public class FormDSLGenerator extends AbstractGenerator {
   
   protected CharSequence _compute(final Money type, final Name name) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<input class=\"form-control\" type=\"number\" min=\"0.00\" max=\"10000.00\" step=\"0.01\" placeholder=\"0.00\" name=\"");
+    _builder.append("<input class=\"");
+    _builder.append(this.formClass);
+    _builder.append("\" type=\"number\" min=\"0.00\" max=\"10000.00\" step=\"0.01\" placeholder=\"0.00\" name=\"");
     _builder.append(name);
     _builder.append("\">");
     return _builder;
@@ -94,7 +100,9 @@ public class FormDSLGenerator extends AbstractGenerator {
   
   protected CharSequence _compute(final ShortText type, final Name name) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<input class=\"form-control\" type=\"text\" name=\"");
+    _builder.append("<input class=\"");
+    _builder.append(this.formClass);
+    _builder.append("\" type=\"text\" name=\"");
     _builder.append(name);
     _builder.append("\" placeholder=\"");
     String _text = name.getText();
@@ -124,26 +132,20 @@ public class FormDSLGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("<form>");
     _builder.newLine();
-    _builder.append("\t");
-    _builder.append("<div class=\"mb-3\">");
-    _builder.newLine();
     {
       EList<Input> _content = form.getContent();
       for(final Input input : _content) {
-        _builder.append("\t\t");
+        _builder.append("\t");
         CharSequence _compute = this.compute(input);
-        _builder.append(_compute, "\t\t");
+        _builder.append(_compute, "\t");
         _builder.newLineIfNotEmpty();
-        _builder.append("\t\t");
-        _builder.append("<br>");
-        _builder.newLine();
       }
     }
-    _builder.append("\t\t");
-    _builder.append("<input type=\"submit\" class=\"btn btn-primary\" value=\"submit\" onClick=\"submitHandler()\">");
+    _builder.append("\t");
+    _builder.append("<br>");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("</div>");
+    _builder.append("<input type=\"submit\" class=\"btn btn-primary\" value=\"Submit\" onClick=\"submitHandler()\">");
     _builder.newLine();
     _builder.append("</form>");
     _builder.newLine();
@@ -201,6 +203,24 @@ public class FormDSLGenerator extends AbstractGenerator {
     _builder.append("<head>");
     _builder.newLine();
     _builder.append("\t");
+    _builder.append("<style>");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("input{");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("height:45px;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("width:100%;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("</style>");
+    _builder.newLine();
+    _builder.append("\t");
     _builder.append("<title>Form page demo</title>");
     _builder.newLine();
     _builder.append("\t");
@@ -216,17 +236,22 @@ public class FormDSLGenerator extends AbstractGenerator {
     _builder.append("\t");
     _builder.append("</head>");
     _builder.newLine();
-    _builder.append("<body>");
+    _builder.append("<body style=\"background-color:#FEFEFE\">");
     _builder.newLine();
     _builder.append("    ");
     _builder.append("<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf\" crossorigin=\"anonymous\"></script>");
     _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<div style=\"margin:0 auto; width: 38%; background-color:#FFF; padding:5%; padding-top:6%\">");
     _builder.newLine();
     return _builder;
   }
   
   public CharSequence endHTML() {
     StringConcatenation _builder = new StringConcatenation();
+    _builder.append("\t");
+    _builder.append("</div>");
+    _builder.newLine();
     _builder.append("</body>");
     _builder.newLine();
     _builder.append("</html>");
