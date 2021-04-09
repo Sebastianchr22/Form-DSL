@@ -3,7 +3,16 @@
  */
 package form.generator;
 
+import com.google.common.collect.Iterators;
+import form.formDSL.Form;
+import form.formDSL.Input;
+import form.formDSL.Name;
+import form.formDSL.Type;
+import java.util.Arrays;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
@@ -17,6 +26,114 @@ import org.eclipse.xtext.generator.IGeneratorContext;
 public class FormDSLGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
-	  
+    final Form form = Iterators.<Form>filter(resource.getAllContents(), Form.class).next();
+    fsa.generateFile("someFile.html", this.compileClass(form));
+  }
+  
+  protected CharSequence _compute(final Input input) {
+    CharSequence _xblockexpression = null;
+    {
+      final CharSequence type = this.compute(input.getType());
+      final CharSequence name = this.compute(input.getName());
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("<label>");
+      _builder.append(name);
+      _builder.append(":</label>");
+      _builder.newLineIfNotEmpty();
+      _builder.append("<");
+      CharSequence _compileInput = this.compileInput(input.getType());
+      _builder.append(_compileInput);
+      _builder.append(" placeholder=\"");
+      _builder.append(name);
+      _builder.append("\">");
+      _builder.newLineIfNotEmpty();
+      _builder.newLine();
+      _xblockexpression = _builder;
+    }
+    return _xblockexpression;
+  }
+  
+  protected CharSequence _compute(final Name name) {
+    return name.getText();
+  }
+  
+  protected String _compute(final Type type) {
+    return type.getText();
+  }
+  
+  public CharSequence compileInput(final Type type) {
+    CharSequence _switchResult = null;
+    String _text = type.getText();
+    if (_text != null) {
+      switch (_text) {
+        case "longText":
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("textarea rows=\"8\" cols=\"50\"");
+          _switchResult = _builder;
+          break;
+        case "shortText":
+          StringConcatenation _builder_1 = new StringConcatenation();
+          _builder_1.append("input type=\"text\"");
+          _switchResult = _builder_1;
+          break;
+      }
+    }
+    return _switchResult;
+  }
+  
+  public CharSequence compileClass(final Form form) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<form>");
+    _builder.newLine();
+    {
+      EList<Input> _content = form.getContent();
+      for(final Input input : _content) {
+        _builder.append("\t");
+        CharSequence _compute = this.compute(input);
+        _builder.append(_compute, "\t");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("<br>");
+        _builder.newLine();
+      }
+    }
+    _builder.append("\t");
+    _builder.append("<input type=\"submit\" value=\"submit\" onClick=\"submitHandler()\">");
+    _builder.newLine();
+    _builder.append("</form>");
+    _builder.newLine();
+    CharSequence _compilejs = this.compilejs(form);
+    _builder.append(_compilejs);
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  public CharSequence compilejs(final Form form) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<script>");
+    _builder.newLine();
+    _builder.append("function submitHandler(){");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("//todo");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("</script>");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence compute(final EObject input) {
+    if (input instanceof Input) {
+      return _compute((Input)input);
+    } else if (input instanceof Name) {
+      return _compute((Name)input);
+    } else if (input instanceof Type) {
+      return _compute((Type)input);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(input).toString());
+    }
   }
 }

@@ -2,8 +2,25 @@ grammar form.FormDSL with org.eclipse.xtext.common.Terminals
 
 generate formDSL "http://www.FormDSL.form"
 
-Model:
-	greetings+=Greeting*;
-	
-Greeting:
-	'Hello' name=ID '!';
+Form: 
+	{Form}"form" content += (Input)*
+;
+
+Input:
+	type = Type
+	name = Name
+	(expression = Expression)?
+	;
+
+Type:
+	text="shortText" | text="date" | text="number" | 
+	text="money" | text="email" | text="longText" | text="stringNumber"
+;
+
+Name: 
+	text = STRING
+;
+
+Expression:
+	text="optional" | text="focus" | text="require"
+;

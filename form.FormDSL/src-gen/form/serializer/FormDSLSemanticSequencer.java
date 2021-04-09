@@ -4,9 +4,12 @@
 package form.serializer;
 
 import com.google.inject.Inject;
+import form.formDSL.Expression;
+import form.formDSL.Form;
 import form.formDSL.FormDSLPackage;
-import form.formDSL.Greeting;
-import form.formDSL.Model;
+import form.formDSL.Input;
+import form.formDSL.Name;
+import form.formDSL.Type;
 import form.services.FormDSLGrammarAccess;
 import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
@@ -33,11 +36,20 @@ public class FormDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == FormDSLPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case FormDSLPackage.GREETING:
-				sequence_Greeting(context, (Greeting) semanticObject); 
+			case FormDSLPackage.EXPRESSION:
+				sequence_Expression(context, (Expression) semanticObject); 
 				return; 
-			case FormDSLPackage.MODEL:
-				sequence_Model(context, (Model) semanticObject); 
+			case FormDSLPackage.FORM:
+				sequence_Form(context, (Form) semanticObject); 
+				return; 
+			case FormDSLPackage.INPUT:
+				sequence_Input(context, (Input) semanticObject); 
+				return; 
+			case FormDSLPackage.NAME:
+				sequence_Name(context, (Name) semanticObject); 
+				return; 
+			case FormDSLPackage.TYPE:
+				sequence_Type(context, (Type) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -46,30 +58,74 @@ public class FormDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Contexts:
-	 *     Greeting returns Greeting
+	 *     Expression returns Expression
 	 *
 	 * Constraint:
-	 *     name=ID
+	 *     (text='optional' | text='focus' | text='require')
 	 */
-	protected void sequence_Greeting(ISerializationContext context, Greeting semanticObject) {
+	protected void sequence_Expression(ISerializationContext context, Expression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Form returns Form
+	 *
+	 * Constraint:
+	 *     content+=Input*
+	 */
+	protected void sequence_Form(ISerializationContext context, Form semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Input returns Input
+	 *
+	 * Constraint:
+	 *     (type=Type name=Name expression=Expression?)
+	 */
+	protected void sequence_Input(ISerializationContext context, Input semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Name returns Name
+	 *
+	 * Constraint:
+	 *     text=STRING
+	 */
+	protected void sequence_Name(ISerializationContext context, Name semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, FormDSLPackage.Literals.GREETING__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FormDSLPackage.Literals.GREETING__NAME));
+			if (transientValues.isValueTransient(semanticObject, FormDSLPackage.Literals.NAME__TEXT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FormDSLPackage.Literals.NAME__TEXT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getGreetingAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getNameAccess().getTextSTRINGTerminalRuleCall_0(), semanticObject.getText());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Contexts:
-	 *     Model returns Model
+	 *     Type returns Type
 	 *
 	 * Constraint:
-	 *     greetings+=Greeting+
+	 *     (
+	 *         text='shortText' | 
+	 *         text='date' | 
+	 *         text='number' | 
+	 *         text='money' | 
+	 *         text='email' | 
+	 *         text='longText' | 
+	 *         text='stringNumber'
+	 *     )
 	 */
-	protected void sequence_Model(ISerializationContext context, Model semanticObject) {
+	protected void sequence_Type(ISerializationContext context, Type semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

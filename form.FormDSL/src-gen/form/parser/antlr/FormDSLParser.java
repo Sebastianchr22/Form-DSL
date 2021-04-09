@@ -27,7 +27,7 @@ public class FormDSLParser extends AbstractAntlrParser {
 
 	@Override 
 	protected String getDefaultRuleName() {
-		return "Model";
+		return "Form";
 	}
 
 	public FormDSLGrammarAccess getGrammarAccess() {

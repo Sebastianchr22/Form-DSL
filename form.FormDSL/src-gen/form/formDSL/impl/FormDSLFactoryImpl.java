@@ -65,8 +65,11 @@ public class FormDSLFactoryImpl extends EFactoryImpl implements FormDSLFactory
   {
     switch (eClass.getClassifierID())
     {
-      case FormDSLPackage.MODEL: return createModel();
-      case FormDSLPackage.GREETING: return createGreeting();
+      case FormDSLPackage.FORM: return createForm();
+      case FormDSLPackage.INPUT: return createInput();
+      case FormDSLPackage.TYPE: return createType();
+      case FormDSLPackage.NAME: return createName();
+      case FormDSLPackage.EXPRESSION: return createExpression();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -78,10 +81,10 @@ public class FormDSLFactoryImpl extends EFactoryImpl implements FormDSLFactory
    * @generated
    */
   @Override
-  public Model createModel()
+  public Form createForm()
   {
-    ModelImpl model = new ModelImpl();
-    return model;
+    FormImpl form = new FormImpl();
+    return form;
   }
 
   /**
@@ -90,10 +93,46 @@ public class FormDSLFactoryImpl extends EFactoryImpl implements FormDSLFactory
    * @generated
    */
   @Override
-  public Greeting createGreeting()
+  public Input createInput()
   {
-    GreetingImpl greeting = new GreetingImpl();
-    return greeting;
+    InputImpl input = new InputImpl();
+    return input;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Type createType()
+  {
+    TypeImpl type = new TypeImpl();
+    return type;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Name createName()
+  {
+    NameImpl name = new NameImpl();
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Expression createExpression()
+  {
+    ExpressionImpl expression = new ExpressionImpl();
+    return expression;
   }
 
   /**

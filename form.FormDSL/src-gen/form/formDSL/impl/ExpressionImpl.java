@@ -3,55 +3,57 @@
  */
 package form.formDSL.impl;
 
+import form.formDSL.Expression;
 import form.formDSL.FormDSLPackage;
-import form.formDSL.Greeting;
-import form.formDSL.Model;
 
-import java.util.Collection;
-
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Model</b></em>'.
+ * An implementation of the model object '<em><b>Expression</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link form.formDSL.impl.ModelImpl#getGreetings <em>Greetings</em>}</li>
+ *   <li>{@link form.formDSL.impl.ExpressionImpl#getText <em>Text</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ModelImpl extends MinimalEObjectImpl.Container implements Model
+public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expression
 {
   /**
-   * The cached value of the '{@link #getGreetings() <em>Greetings</em>}' containment reference list.
+   * The default value of the '{@link #getText() <em>Text</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getGreetings()
+   * @see #getText()
    * @generated
    * @ordered
    */
-  protected EList<Greeting> greetings;
+  protected static final String TEXT_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getText() <em>Text</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getText()
+   * @generated
+   * @ordered
+   */
+  protected String text = TEXT_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ModelImpl()
+  protected ExpressionImpl()
   {
     super();
   }
@@ -64,7 +66,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   @Override
   protected EClass eStaticClass()
   {
-    return FormDSLPackage.Literals.MODEL;
+    return FormDSLPackage.Literals.EXPRESSION;
   }
 
   /**
@@ -73,13 +75,9 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * @generated
    */
   @Override
-  public EList<Greeting> getGreetings()
+  public String getText()
   {
-    if (greetings == null)
-    {
-      greetings = new EObjectContainmentEList<Greeting>(Greeting.class, this, FormDSLPackage.MODEL__GREETINGS);
-    }
-    return greetings;
+    return text;
   }
 
   /**
@@ -88,14 +86,12 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * @generated
    */
   @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  public void setText(String newText)
   {
-    switch (featureID)
-    {
-      case FormDSLPackage.MODEL__GREETINGS:
-        return ((InternalEList<?>)getGreetings()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
+    String oldText = text;
+    text = newText;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, FormDSLPackage.EXPRESSION__TEXT, oldText, text));
   }
 
   /**
@@ -108,8 +104,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case FormDSLPackage.MODEL__GREETINGS:
-        return getGreetings();
+      case FormDSLPackage.EXPRESSION__TEXT:
+        return getText();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -119,15 +115,13 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case FormDSLPackage.MODEL__GREETINGS:
-        getGreetings().clear();
-        getGreetings().addAll((Collection<? extends Greeting>)newValue);
+      case FormDSLPackage.EXPRESSION__TEXT:
+        setText((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -143,8 +137,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case FormDSLPackage.MODEL__GREETINGS:
-        getGreetings().clear();
+      case FormDSLPackage.EXPRESSION__TEXT:
+        setText(TEXT_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -160,10 +154,27 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case FormDSLPackage.MODEL__GREETINGS:
-        return greetings != null && !greetings.isEmpty();
+      case FormDSLPackage.EXPRESSION__TEXT:
+        return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
     }
     return super.eIsSet(featureID);
   }
 
-} //ModelImpl
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (text: ");
+    result.append(text);
+    result.append(')');
+    return result.toString();
+  }
+
+} //ExpressionImpl

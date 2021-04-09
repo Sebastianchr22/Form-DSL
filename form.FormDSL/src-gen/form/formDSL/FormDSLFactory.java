@@ -24,22 +24,49 @@ public interface FormDSLFactory extends EFactory
   FormDSLFactory eINSTANCE = form.formDSL.impl.FormDSLFactoryImpl.init();
 
   /**
-   * Returns a new object of class '<em>Model</em>'.
+   * Returns a new object of class '<em>Form</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Model</em>'.
+   * @return a new object of class '<em>Form</em>'.
    * @generated
    */
-  Model createModel();
+  Form createForm();
 
   /**
-   * Returns a new object of class '<em>Greeting</em>'.
+   * Returns a new object of class '<em>Input</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Greeting</em>'.
+   * @return a new object of class '<em>Input</em>'.
    * @generated
    */
-  Greeting createGreeting();
+  Input createInput();
+
+  /**
+   * Returns a new object of class '<em>Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Type</em>'.
+   * @generated
+   */
+  Type createType();
+
+  /**
+   * Returns a new object of class '<em>Name</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Name</em>'.
+   * @generated
+   */
+  Name createName();
+
+  /**
+   * Returns a new object of class '<em>Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Expression</em>'.
+   * @generated
+   */
+  Expression createExpression();
 
   /**
    * Returns the package supported by this factory.

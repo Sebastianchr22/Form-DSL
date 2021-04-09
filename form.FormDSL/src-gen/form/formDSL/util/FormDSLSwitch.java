@@ -73,17 +73,38 @@ public class FormDSLSwitch<T> extends Switch<T>
   {
     switch (classifierID)
     {
-      case FormDSLPackage.MODEL:
+      case FormDSLPackage.FORM:
       {
-        Model model = (Model)theEObject;
-        T result = caseModel(model);
+        Form form = (Form)theEObject;
+        T result = caseForm(form);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case FormDSLPackage.GREETING:
+      case FormDSLPackage.INPUT:
       {
-        Greeting greeting = (Greeting)theEObject;
-        T result = caseGreeting(greeting);
+        Input input = (Input)theEObject;
+        T result = caseInput(input);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case FormDSLPackage.TYPE:
+      {
+        Type type = (Type)theEObject;
+        T result = caseType(type);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case FormDSLPackage.NAME:
+      {
+        Name name = (Name)theEObject;
+        T result = caseName(name);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case FormDSLPackage.EXPRESSION:
+      {
+        Expression expression = (Expression)theEObject;
+        T result = caseExpression(expression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -92,33 +113,81 @@ public class FormDSLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Model</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Form</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Model</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Form</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseModel(Model object)
+  public T caseForm(Form object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Greeting</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Input</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Greeting</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Input</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseGreeting(Greeting object)
+  public T caseInput(Input object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseType(Type object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Name</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Name</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseName(Name object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseExpression(Expression object)
   {
     return null;
   }

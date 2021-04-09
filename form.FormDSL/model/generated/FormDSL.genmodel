@@ -6,11 +6,22 @@
     copyrightFields="false" runtimeVersion="2.20">
   <genPackages prefix="FormDSL" basePackage="form" disposableProviderFactory="true"
       fileExtensions="form" ecorePackage="FormDSL.ecore#/">
-    <genClasses ecoreClass="FormDSL.ecore#//Model">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FormDSL.ecore#//Model/greetings"/>
+    <genClasses ecoreClass="FormDSL.ecore#//Form">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FormDSL.ecore#//Form/content"/>
     </genClasses>
-    <genClasses ecoreClass="FormDSL.ecore#//Greeting">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FormDSL.ecore#//Greeting/name"/>
+    <genClasses ecoreClass="FormDSL.ecore#//Input">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FormDSL.ecore#//Input/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FormDSL.ecore#//Input/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FormDSL.ecore#//Input/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="FormDSL.ecore#//Type">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FormDSL.ecore#//Type/text"/>
+    </genClasses>
+    <genClasses ecoreClass="FormDSL.ecore#//Name">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FormDSL.ecore#//Name/text"/>
+    </genClasses>
+    <genClasses ecoreClass="FormDSL.ecore#//Expression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FormDSL.ecore#//Expression/text"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

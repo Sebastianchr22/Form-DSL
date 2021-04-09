@@ -6,6 +6,8 @@ package form.services;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.List;
+import org.eclipse.xtext.Action;
+import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
@@ -21,52 +23,197 @@ import org.eclipse.xtext.service.GrammarProvider;
 @Singleton
 public class FormDSLGrammarAccess extends AbstractElementFinder.AbstractGrammarElementFinder {
 	
-	public class ModelElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "form.FormDSL.Model");
-		private final Assignment cGreetingsAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cGreetingsGreetingParserRuleCall_0 = (RuleCall)cGreetingsAssignment.eContents().get(0);
-		
-		//Model:
-		//	greetings+=Greeting*;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//greetings+=Greeting*
-		public Assignment getGreetingsAssignment() { return cGreetingsAssignment; }
-		
-		//Greeting
-		public RuleCall getGreetingsGreetingParserRuleCall_0() { return cGreetingsGreetingParserRuleCall_0; }
-	}
-	public class GreetingElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "form.FormDSL.Greeting");
+	public class FormElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "form.FormDSL.Form");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cHelloKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cExclamationMarkKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Action cFormAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cFormKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cContentAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cContentInputParserRuleCall_2_0 = (RuleCall)cContentAssignment_2.eContents().get(0);
 		
-		//Greeting:
-		//	'Hello' name=ID '!';
+		//Form:
+		//	{Form} "form" content+=Input*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Hello' name=ID '!'
+		//{Form} "form" content+=Input*
 		public Group getGroup() { return cGroup; }
 		
-		//'Hello'
-		public Keyword getHelloKeyword_0() { return cHelloKeyword_0; }
+		//{Form}
+		public Action getFormAction_0() { return cFormAction_0; }
 		
-		//name=ID
+		//"form"
+		public Keyword getFormKeyword_1() { return cFormKeyword_1; }
+		
+		//content+=Input*
+		public Assignment getContentAssignment_2() { return cContentAssignment_2; }
+		
+		//Input
+		public RuleCall getContentInputParserRuleCall_2_0() { return cContentInputParserRuleCall_2_0; }
+	}
+	public class InputElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "form.FormDSL.Input");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cTypeTypeParserRuleCall_0_0 = (RuleCall)cTypeAssignment_0.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameNameParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cExpressionAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cExpressionExpressionParserRuleCall_2_0 = (RuleCall)cExpressionAssignment_2.eContents().get(0);
+		
+		//Input:
+		//	type=Type
+		//	name=Name
+		//	expression=Expression?;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//type=Type
+		//name=Name
+		//expression=Expression?
+		public Group getGroup() { return cGroup; }
+		
+		//type=Type
+		public Assignment getTypeAssignment_0() { return cTypeAssignment_0; }
+		
+		//Type
+		public RuleCall getTypeTypeParserRuleCall_0_0() { return cTypeTypeParserRuleCall_0_0; }
+		
+		//name=Name
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 		
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		//Name
+		public RuleCall getNameNameParserRuleCall_1_0() { return cNameNameParserRuleCall_1_0; }
 		
-		//'!'
-		public Keyword getExclamationMarkKeyword_2() { return cExclamationMarkKeyword_2; }
+		//expression=Expression?
+		public Assignment getExpressionAssignment_2() { return cExpressionAssignment_2; }
+		
+		//Expression
+		public RuleCall getExpressionExpressionParserRuleCall_2_0() { return cExpressionExpressionParserRuleCall_2_0; }
+	}
+	public class TypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "form.FormDSL.Type");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Assignment cTextAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final Keyword cTextShortTextKeyword_0_0 = (Keyword)cTextAssignment_0.eContents().get(0);
+		private final Assignment cTextAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
+		private final Keyword cTextDateKeyword_1_0 = (Keyword)cTextAssignment_1.eContents().get(0);
+		private final Assignment cTextAssignment_2 = (Assignment)cAlternatives.eContents().get(2);
+		private final Keyword cTextNumberKeyword_2_0 = (Keyword)cTextAssignment_2.eContents().get(0);
+		private final Assignment cTextAssignment_3 = (Assignment)cAlternatives.eContents().get(3);
+		private final Keyword cTextMoneyKeyword_3_0 = (Keyword)cTextAssignment_3.eContents().get(0);
+		private final Assignment cTextAssignment_4 = (Assignment)cAlternatives.eContents().get(4);
+		private final Keyword cTextEmailKeyword_4_0 = (Keyword)cTextAssignment_4.eContents().get(0);
+		private final Assignment cTextAssignment_5 = (Assignment)cAlternatives.eContents().get(5);
+		private final Keyword cTextLongTextKeyword_5_0 = (Keyword)cTextAssignment_5.eContents().get(0);
+		private final Assignment cTextAssignment_6 = (Assignment)cAlternatives.eContents().get(6);
+		private final Keyword cTextStringNumberKeyword_6_0 = (Keyword)cTextAssignment_6.eContents().get(0);
+		
+		//Type:
+		//	text="shortText" | text="date" | text="number" | text="money" | text="email" | text="longText" | text="stringNumber"
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//text="shortText" | text="date" | text="number" | text="money" | text="email" | text="longText" | text="stringNumber"
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//text="shortText"
+		public Assignment getTextAssignment_0() { return cTextAssignment_0; }
+		
+		//"shortText"
+		public Keyword getTextShortTextKeyword_0_0() { return cTextShortTextKeyword_0_0; }
+		
+		//text="date"
+		public Assignment getTextAssignment_1() { return cTextAssignment_1; }
+		
+		//"date"
+		public Keyword getTextDateKeyword_1_0() { return cTextDateKeyword_1_0; }
+		
+		//text="number"
+		public Assignment getTextAssignment_2() { return cTextAssignment_2; }
+		
+		//"number"
+		public Keyword getTextNumberKeyword_2_0() { return cTextNumberKeyword_2_0; }
+		
+		//text="money"
+		public Assignment getTextAssignment_3() { return cTextAssignment_3; }
+		
+		//"money"
+		public Keyword getTextMoneyKeyword_3_0() { return cTextMoneyKeyword_3_0; }
+		
+		//text="email"
+		public Assignment getTextAssignment_4() { return cTextAssignment_4; }
+		
+		//"email"
+		public Keyword getTextEmailKeyword_4_0() { return cTextEmailKeyword_4_0; }
+		
+		//text="longText"
+		public Assignment getTextAssignment_5() { return cTextAssignment_5; }
+		
+		//"longText"
+		public Keyword getTextLongTextKeyword_5_0() { return cTextLongTextKeyword_5_0; }
+		
+		//text="stringNumber"
+		public Assignment getTextAssignment_6() { return cTextAssignment_6; }
+		
+		//"stringNumber"
+		public Keyword getTextStringNumberKeyword_6_0() { return cTextStringNumberKeyword_6_0; }
+	}
+	public class NameElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "form.FormDSL.Name");
+		private final Assignment cTextAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cTextSTRINGTerminalRuleCall_0 = (RuleCall)cTextAssignment.eContents().get(0);
+		
+		//Name:
+		//	text=STRING;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//text=STRING
+		public Assignment getTextAssignment() { return cTextAssignment; }
+		
+		//STRING
+		public RuleCall getTextSTRINGTerminalRuleCall_0() { return cTextSTRINGTerminalRuleCall_0; }
+	}
+	public class ExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "form.FormDSL.Expression");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Assignment cTextAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final Keyword cTextOptionalKeyword_0_0 = (Keyword)cTextAssignment_0.eContents().get(0);
+		private final Assignment cTextAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
+		private final Keyword cTextFocusKeyword_1_0 = (Keyword)cTextAssignment_1.eContents().get(0);
+		private final Assignment cTextAssignment_2 = (Assignment)cAlternatives.eContents().get(2);
+		private final Keyword cTextRequireKeyword_2_0 = (Keyword)cTextAssignment_2.eContents().get(0);
+		
+		//Expression:
+		//	text="optional" | text="focus" | text="require";
+		@Override public ParserRule getRule() { return rule; }
+		
+		//text="optional" | text="focus" | text="require"
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//text="optional"
+		public Assignment getTextAssignment_0() { return cTextAssignment_0; }
+		
+		//"optional"
+		public Keyword getTextOptionalKeyword_0_0() { return cTextOptionalKeyword_0_0; }
+		
+		//text="focus"
+		public Assignment getTextAssignment_1() { return cTextAssignment_1; }
+		
+		//"focus"
+		public Keyword getTextFocusKeyword_1_0() { return cTextFocusKeyword_1_0; }
+		
+		//text="require"
+		public Assignment getTextAssignment_2() { return cTextAssignment_2; }
+		
+		//"require"
+		public Keyword getTextRequireKeyword_2_0() { return cTextRequireKeyword_2_0; }
 	}
 	
 	
-	private final ModelElements pModel;
-	private final GreetingElements pGreeting;
+	private final FormElements pForm;
+	private final InputElements pInput;
+	private final TypeElements pType;
+	private final NameElements pName;
+	private final ExpressionElements pExpression;
 	
 	private final Grammar grammar;
 	
@@ -77,8 +224,11 @@ public class FormDSLGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
-		this.pModel = new ModelElements();
-		this.pGreeting = new GreetingElements();
+		this.pForm = new FormElements();
+		this.pInput = new InputElements();
+		this.pType = new TypeElements();
+		this.pName = new NameElements();
+		this.pExpression = new ExpressionElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -108,24 +258,57 @@ public class FormDSLGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 	}
 
 	
-	//Model:
-	//	greetings+=Greeting*;
-	public ModelElements getModelAccess() {
-		return pModel;
+	//Form:
+	//	{Form} "form" content+=Input*;
+	public FormElements getFormAccess() {
+		return pForm;
 	}
 	
-	public ParserRule getModelRule() {
-		return getModelAccess().getRule();
+	public ParserRule getFormRule() {
+		return getFormAccess().getRule();
 	}
 	
-	//Greeting:
-	//	'Hello' name=ID '!';
-	public GreetingElements getGreetingAccess() {
-		return pGreeting;
+	//Input:
+	//	type=Type
+	//	name=Name
+	//	expression=Expression?;
+	public InputElements getInputAccess() {
+		return pInput;
 	}
 	
-	public ParserRule getGreetingRule() {
-		return getGreetingAccess().getRule();
+	public ParserRule getInputRule() {
+		return getInputAccess().getRule();
+	}
+	
+	//Type:
+	//	text="shortText" | text="date" | text="number" | text="money" | text="email" | text="longText" | text="stringNumber"
+	//;
+	public TypeElements getTypeAccess() {
+		return pType;
+	}
+	
+	public ParserRule getTypeRule() {
+		return getTypeAccess().getRule();
+	}
+	
+	//Name:
+	//	text=STRING;
+	public NameElements getNameAccess() {
+		return pName;
+	}
+	
+	public ParserRule getNameRule() {
+		return getNameAccess().getRule();
+	}
+	
+	//Expression:
+	//	text="optional" | text="focus" | text="require";
+	public ExpressionElements getExpressionAccess() {
+		return pExpression;
+	}
+	
+	public ParserRule getExpressionRule() {
+		return getExpressionAccess().getRule();
 	}
 	
 	//terminal ID:

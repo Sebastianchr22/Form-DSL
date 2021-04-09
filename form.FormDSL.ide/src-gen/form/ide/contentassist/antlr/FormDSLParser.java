@@ -31,9 +31,25 @@ public class FormDSLParser extends AbstractContentAssistParser {
 		}
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, FormDSLGrammarAccess grammarAccess) {
-			builder.put(grammarAccess.getGreetingAccess().getGroup(), "rule__Greeting__Group__0");
-			builder.put(grammarAccess.getModelAccess().getGreetingsAssignment(), "rule__Model__GreetingsAssignment");
-			builder.put(grammarAccess.getGreetingAccess().getNameAssignment_1(), "rule__Greeting__NameAssignment_1");
+			builder.put(grammarAccess.getTypeAccess().getAlternatives(), "rule__Type__Alternatives");
+			builder.put(grammarAccess.getExpressionAccess().getAlternatives(), "rule__Expression__Alternatives");
+			builder.put(grammarAccess.getFormAccess().getGroup(), "rule__Form__Group__0");
+			builder.put(grammarAccess.getInputAccess().getGroup(), "rule__Input__Group__0");
+			builder.put(grammarAccess.getFormAccess().getContentAssignment_2(), "rule__Form__ContentAssignment_2");
+			builder.put(grammarAccess.getInputAccess().getTypeAssignment_0(), "rule__Input__TypeAssignment_0");
+			builder.put(grammarAccess.getInputAccess().getNameAssignment_1(), "rule__Input__NameAssignment_1");
+			builder.put(grammarAccess.getInputAccess().getExpressionAssignment_2(), "rule__Input__ExpressionAssignment_2");
+			builder.put(grammarAccess.getTypeAccess().getTextAssignment_0(), "rule__Type__TextAssignment_0");
+			builder.put(grammarAccess.getTypeAccess().getTextAssignment_1(), "rule__Type__TextAssignment_1");
+			builder.put(grammarAccess.getTypeAccess().getTextAssignment_2(), "rule__Type__TextAssignment_2");
+			builder.put(grammarAccess.getTypeAccess().getTextAssignment_3(), "rule__Type__TextAssignment_3");
+			builder.put(grammarAccess.getTypeAccess().getTextAssignment_4(), "rule__Type__TextAssignment_4");
+			builder.put(grammarAccess.getTypeAccess().getTextAssignment_5(), "rule__Type__TextAssignment_5");
+			builder.put(grammarAccess.getTypeAccess().getTextAssignment_6(), "rule__Type__TextAssignment_6");
+			builder.put(grammarAccess.getNameAccess().getTextAssignment(), "rule__Name__TextAssignment");
+			builder.put(grammarAccess.getExpressionAccess().getTextAssignment_0(), "rule__Expression__TextAssignment_0");
+			builder.put(grammarAccess.getExpressionAccess().getTextAssignment_1(), "rule__Expression__TextAssignment_1");
+			builder.put(grammarAccess.getExpressionAccess().getTextAssignment_2(), "rule__Expression__TextAssignment_2");
 		}
 	}
 	

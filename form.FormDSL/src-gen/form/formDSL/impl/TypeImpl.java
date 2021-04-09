@@ -4,7 +4,7 @@
 package form.formDSL.impl;
 
 import form.formDSL.FormDSLPackage;
-import form.formDSL.Greeting;
+import form.formDSL.Type;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -15,45 +15,45 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Greeting</b></em>'.
+ * An implementation of the model object '<em><b>Type</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link form.formDSL.impl.GreetingImpl#getName <em>Name</em>}</li>
+ *   <li>{@link form.formDSL.impl.TypeImpl#getText <em>Text</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class GreetingImpl extends MinimalEObjectImpl.Container implements Greeting
+public class TypeImpl extends MinimalEObjectImpl.Container implements Type
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The default value of the '{@link #getText() <em>Text</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getText()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected static final String TEXT_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getText() <em>Text</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getText()
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected String text = TEXT_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected GreetingImpl()
+  protected TypeImpl()
   {
     super();
   }
@@ -66,7 +66,7 @@ public class GreetingImpl extends MinimalEObjectImpl.Container implements Greeti
   @Override
   protected EClass eStaticClass()
   {
-    return FormDSLPackage.Literals.GREETING;
+    return FormDSLPackage.Literals.TYPE;
   }
 
   /**
@@ -75,9 +75,9 @@ public class GreetingImpl extends MinimalEObjectImpl.Container implements Greeti
    * @generated
    */
   @Override
-  public String getName()
+  public String getText()
   {
-    return name;
+    return text;
   }
 
   /**
@@ -86,12 +86,12 @@ public class GreetingImpl extends MinimalEObjectImpl.Container implements Greeti
    * @generated
    */
   @Override
-  public void setName(String newName)
+  public void setText(String newText)
   {
-    String oldName = name;
-    name = newName;
+    String oldText = text;
+    text = newText;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, FormDSLPackage.GREETING__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, FormDSLPackage.TYPE__TEXT, oldText, text));
   }
 
   /**
@@ -104,8 +104,8 @@ public class GreetingImpl extends MinimalEObjectImpl.Container implements Greeti
   {
     switch (featureID)
     {
-      case FormDSLPackage.GREETING__NAME:
-        return getName();
+      case FormDSLPackage.TYPE__TEXT:
+        return getText();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -120,8 +120,8 @@ public class GreetingImpl extends MinimalEObjectImpl.Container implements Greeti
   {
     switch (featureID)
     {
-      case FormDSLPackage.GREETING__NAME:
-        setName((String)newValue);
+      case FormDSLPackage.TYPE__TEXT:
+        setText((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -137,8 +137,8 @@ public class GreetingImpl extends MinimalEObjectImpl.Container implements Greeti
   {
     switch (featureID)
     {
-      case FormDSLPackage.GREETING__NAME:
-        setName(NAME_EDEFAULT);
+      case FormDSLPackage.TYPE__TEXT:
+        setText(TEXT_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -154,8 +154,8 @@ public class GreetingImpl extends MinimalEObjectImpl.Container implements Greeti
   {
     switch (featureID)
     {
-      case FormDSLPackage.GREETING__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case FormDSLPackage.TYPE__TEXT:
+        return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
     }
     return super.eIsSet(featureID);
   }
@@ -171,10 +171,10 @@ public class GreetingImpl extends MinimalEObjectImpl.Container implements Greeti
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
-    result.append(name);
+    result.append(" (text: ");
+    result.append(text);
     result.append(')');
     return result.toString();
   }
 
-} //GreetingImpl
+} //TypeImpl

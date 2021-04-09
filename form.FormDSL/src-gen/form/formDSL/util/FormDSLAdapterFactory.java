@@ -76,14 +76,29 @@ public class FormDSLAdapterFactory extends AdapterFactoryImpl
     new FormDSLSwitch<Adapter>()
     {
       @Override
-      public Adapter caseModel(Model object)
+      public Adapter caseForm(Form object)
       {
-        return createModelAdapter();
+        return createFormAdapter();
       }
       @Override
-      public Adapter caseGreeting(Greeting object)
+      public Adapter caseInput(Input object)
       {
-        return createGreetingAdapter();
+        return createInputAdapter();
+      }
+      @Override
+      public Adapter caseType(Type object)
+      {
+        return createTypeAdapter();
+      }
+      @Override
+      public Adapter caseName(Name object)
+      {
+        return createNameAdapter();
+      }
+      @Override
+      public Adapter caseExpression(Expression object)
+      {
+        return createExpressionAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -108,31 +123,76 @@ public class FormDSLAdapterFactory extends AdapterFactoryImpl
 
 
   /**
-   * Creates a new adapter for an object of class '{@link form.formDSL.Model <em>Model</em>}'.
+   * Creates a new adapter for an object of class '{@link form.formDSL.Form <em>Form</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see form.formDSL.Model
+   * @see form.formDSL.Form
    * @generated
    */
-  public Adapter createModelAdapter()
+  public Adapter createFormAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link form.formDSL.Greeting <em>Greeting</em>}'.
+   * Creates a new adapter for an object of class '{@link form.formDSL.Input <em>Input</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see form.formDSL.Greeting
+   * @see form.formDSL.Input
    * @generated
    */
-  public Adapter createGreetingAdapter()
+  public Adapter createInputAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link form.formDSL.Type <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see form.formDSL.Type
+   * @generated
+   */
+  public Adapter createTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link form.formDSL.Name <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see form.formDSL.Name
+   * @generated
+   */
+  public Adapter createNameAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link form.formDSL.Expression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see form.formDSL.Expression
+   * @generated
+   */
+  public Adapter createExpressionAdapter()
   {
     return null;
   }

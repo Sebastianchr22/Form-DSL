@@ -58,103 +58,290 @@ public interface FormDSLPackage extends EPackage
   FormDSLPackage eINSTANCE = form.formDSL.impl.FormDSLPackageImpl.init();
 
   /**
-   * The meta object id for the '{@link form.formDSL.impl.ModelImpl <em>Model</em>}' class.
+   * The meta object id for the '{@link form.formDSL.impl.FormImpl <em>Form</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see form.formDSL.impl.ModelImpl
-   * @see form.formDSL.impl.FormDSLPackageImpl#getModel()
+   * @see form.formDSL.impl.FormImpl
+   * @see form.formDSL.impl.FormDSLPackageImpl#getForm()
    * @generated
    */
-  int MODEL = 0;
+  int FORM = 0;
 
   /**
-   * The feature id for the '<em><b>Greetings</b></em>' containment reference list.
+   * The feature id for the '<em><b>Content</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL__GREETINGS = 0;
+  int FORM__CONTENT = 0;
 
   /**
-   * The number of structural features of the '<em>Model</em>' class.
+   * The number of structural features of the '<em>Form</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL_FEATURE_COUNT = 1;
+  int FORM_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link form.formDSL.impl.GreetingImpl <em>Greeting</em>}' class.
+   * The meta object id for the '{@link form.formDSL.impl.InputImpl <em>Input</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see form.formDSL.impl.GreetingImpl
-   * @see form.formDSL.impl.FormDSLPackageImpl#getGreeting()
+   * @see form.formDSL.impl.InputImpl
+   * @see form.formDSL.impl.FormDSLPackageImpl#getInput()
    * @generated
    */
-  int GREETING = 1;
+  int INPUT = 1;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GREETING__NAME = 0;
-
-  /**
-   * The number of structural features of the '<em>Greeting</em>' class.
+   * The feature id for the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GREETING_FEATURE_COUNT = 1;
+  int INPUT__TYPE = 0;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INPUT__NAME = 1;
+
+  /**
+   * The feature id for the '<em><b>Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INPUT__EXPRESSION = 2;
+
+  /**
+   * The number of structural features of the '<em>Input</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INPUT_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link form.formDSL.impl.TypeImpl <em>Type</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see form.formDSL.impl.TypeImpl
+   * @see form.formDSL.impl.FormDSLPackageImpl#getType()
+   * @generated
+   */
+  int TYPE = 2;
+
+  /**
+   * The feature id for the '<em><b>Text</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE__TEXT = 0;
+
+  /**
+   * The number of structural features of the '<em>Type</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link form.formDSL.impl.NameImpl <em>Name</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see form.formDSL.impl.NameImpl
+   * @see form.formDSL.impl.FormDSLPackageImpl#getName_()
+   * @generated
+   */
+  int NAME = 3;
+
+  /**
+   * The feature id for the '<em><b>Text</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NAME__TEXT = 0;
+
+  /**
+   * The number of structural features of the '<em>Name</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NAME_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link form.formDSL.impl.ExpressionImpl <em>Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see form.formDSL.impl.ExpressionImpl
+   * @see form.formDSL.impl.FormDSLPackageImpl#getExpression()
+   * @generated
+   */
+  int EXPRESSION = 4;
+
+  /**
+   * The feature id for the '<em><b>Text</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION__TEXT = 0;
+
+  /**
+   * The number of structural features of the '<em>Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION_FEATURE_COUNT = 1;
 
 
   /**
-   * Returns the meta object for class '{@link form.formDSL.Model <em>Model</em>}'.
+   * Returns the meta object for class '{@link form.formDSL.Form <em>Form</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Model</em>'.
-   * @see form.formDSL.Model
+   * @return the meta object for class '<em>Form</em>'.
+   * @see form.formDSL.Form
    * @generated
    */
-  EClass getModel();
+  EClass getForm();
 
   /**
-   * Returns the meta object for the containment reference list '{@link form.formDSL.Model#getGreetings <em>Greetings</em>}'.
+   * Returns the meta object for the containment reference list '{@link form.formDSL.Form#getContent <em>Content</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Greetings</em>'.
-   * @see form.formDSL.Model#getGreetings()
-   * @see #getModel()
+   * @return the meta object for the containment reference list '<em>Content</em>'.
+   * @see form.formDSL.Form#getContent()
+   * @see #getForm()
    * @generated
    */
-  EReference getModel_Greetings();
+  EReference getForm_Content();
 
   /**
-   * Returns the meta object for class '{@link form.formDSL.Greeting <em>Greeting</em>}'.
+   * Returns the meta object for class '{@link form.formDSL.Input <em>Input</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Greeting</em>'.
-   * @see form.formDSL.Greeting
+   * @return the meta object for class '<em>Input</em>'.
+   * @see form.formDSL.Input
    * @generated
    */
-  EClass getGreeting();
+  EClass getInput();
 
   /**
-   * Returns the meta object for the attribute '{@link form.formDSL.Greeting#getName <em>Name</em>}'.
+   * Returns the meta object for the containment reference '{@link form.formDSL.Input#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see form.formDSL.Greeting#getName()
-   * @see #getGreeting()
+   * @return the meta object for the containment reference '<em>Type</em>'.
+   * @see form.formDSL.Input#getType()
+   * @see #getInput()
    * @generated
    */
-  EAttribute getGreeting_Name();
+  EReference getInput_Type();
+
+  /**
+   * Returns the meta object for the containment reference '{@link form.formDSL.Input#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Name</em>'.
+   * @see form.formDSL.Input#getName()
+   * @see #getInput()
+   * @generated
+   */
+  EReference getInput_Name();
+
+  /**
+   * Returns the meta object for the containment reference '{@link form.formDSL.Input#getExpression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expression</em>'.
+   * @see form.formDSL.Input#getExpression()
+   * @see #getInput()
+   * @generated
+   */
+  EReference getInput_Expression();
+
+  /**
+   * Returns the meta object for class '{@link form.formDSL.Type <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Type</em>'.
+   * @see form.formDSL.Type
+   * @generated
+   */
+  EClass getType();
+
+  /**
+   * Returns the meta object for the attribute '{@link form.formDSL.Type#getText <em>Text</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Text</em>'.
+   * @see form.formDSL.Type#getText()
+   * @see #getType()
+   * @generated
+   */
+  EAttribute getType_Text();
+
+  /**
+   * Returns the meta object for class '{@link form.formDSL.Name <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Name</em>'.
+   * @see form.formDSL.Name
+   * @generated
+   */
+  EClass getName_();
+
+  /**
+   * Returns the meta object for the attribute '{@link form.formDSL.Name#getText <em>Text</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Text</em>'.
+   * @see form.formDSL.Name#getText()
+   * @see #getName_()
+   * @generated
+   */
+  EAttribute getName_Text();
+
+  /**
+   * Returns the meta object for class '{@link form.formDSL.Expression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Expression</em>'.
+   * @see form.formDSL.Expression
+   * @generated
+   */
+  EClass getExpression();
+
+  /**
+   * Returns the meta object for the attribute '{@link form.formDSL.Expression#getText <em>Text</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Text</em>'.
+   * @see form.formDSL.Expression#getText()
+   * @see #getExpression()
+   * @generated
+   */
+  EAttribute getExpression_Text();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -180,40 +367,110 @@ public interface FormDSLPackage extends EPackage
   interface Literals
   {
     /**
-     * The meta object literal for the '{@link form.formDSL.impl.ModelImpl <em>Model</em>}' class.
+     * The meta object literal for the '{@link form.formDSL.impl.FormImpl <em>Form</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see form.formDSL.impl.ModelImpl
-     * @see form.formDSL.impl.FormDSLPackageImpl#getModel()
+     * @see form.formDSL.impl.FormImpl
+     * @see form.formDSL.impl.FormDSLPackageImpl#getForm()
      * @generated
      */
-    EClass MODEL = eINSTANCE.getModel();
+    EClass FORM = eINSTANCE.getForm();
 
     /**
-     * The meta object literal for the '<em><b>Greetings</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Content</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MODEL__GREETINGS = eINSTANCE.getModel_Greetings();
+    EReference FORM__CONTENT = eINSTANCE.getForm_Content();
 
     /**
-     * The meta object literal for the '{@link form.formDSL.impl.GreetingImpl <em>Greeting</em>}' class.
+     * The meta object literal for the '{@link form.formDSL.impl.InputImpl <em>Input</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see form.formDSL.impl.GreetingImpl
-     * @see form.formDSL.impl.FormDSLPackageImpl#getGreeting()
+     * @see form.formDSL.impl.InputImpl
+     * @see form.formDSL.impl.FormDSLPackageImpl#getInput()
      * @generated
      */
-    EClass GREETING = eINSTANCE.getGreeting();
+    EClass INPUT = eINSTANCE.getInput();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute GREETING__NAME = eINSTANCE.getGreeting_Name();
+    EReference INPUT__TYPE = eINSTANCE.getInput_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference INPUT__NAME = eINSTANCE.getInput_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference INPUT__EXPRESSION = eINSTANCE.getInput_Expression();
+
+    /**
+     * The meta object literal for the '{@link form.formDSL.impl.TypeImpl <em>Type</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see form.formDSL.impl.TypeImpl
+     * @see form.formDSL.impl.FormDSLPackageImpl#getType()
+     * @generated
+     */
+    EClass TYPE = eINSTANCE.getType();
+
+    /**
+     * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TYPE__TEXT = eINSTANCE.getType_Text();
+
+    /**
+     * The meta object literal for the '{@link form.formDSL.impl.NameImpl <em>Name</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see form.formDSL.impl.NameImpl
+     * @see form.formDSL.impl.FormDSLPackageImpl#getName_()
+     * @generated
+     */
+    EClass NAME = eINSTANCE.getName_();
+
+    /**
+     * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute NAME__TEXT = eINSTANCE.getName_Text();
+
+    /**
+     * The meta object literal for the '{@link form.formDSL.impl.ExpressionImpl <em>Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see form.formDSL.impl.ExpressionImpl
+     * @see form.formDSL.impl.FormDSLPackageImpl#getExpression()
+     * @generated
+     */
+    EClass EXPRESSION = eINSTANCE.getExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EXPRESSION__TEXT = eINSTANCE.getExpression_Text();
 
   }
 

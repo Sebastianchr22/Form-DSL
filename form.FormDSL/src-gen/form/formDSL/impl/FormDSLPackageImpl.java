@@ -3,10 +3,13 @@
  */
 package form.formDSL.impl;
 
+import form.formDSL.Expression;
+import form.formDSL.Form;
 import form.formDSL.FormDSLFactory;
 import form.formDSL.FormDSLPackage;
-import form.formDSL.Greeting;
-import form.formDSL.Model;
+import form.formDSL.Input;
+import form.formDSL.Name;
+import form.formDSL.Type;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -28,14 +31,35 @@ public class FormDSLPackageImpl extends EPackageImpl implements FormDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass modelEClass = null;
+  private EClass formEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass greetingEClass = null;
+  private EClass inputEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass typeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass nameEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass expressionEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -106,9 +130,9 @@ public class FormDSLPackageImpl extends EPackageImpl implements FormDSLPackage
    * @generated
    */
   @Override
-  public EClass getModel()
+  public EClass getForm()
   {
-    return modelEClass;
+    return formEClass;
   }
 
   /**
@@ -117,9 +141,9 @@ public class FormDSLPackageImpl extends EPackageImpl implements FormDSLPackage
    * @generated
    */
   @Override
-  public EReference getModel_Greetings()
+  public EReference getForm_Content()
   {
-    return (EReference)modelEClass.getEStructuralFeatures().get(0);
+    return (EReference)formEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -128,9 +152,9 @@ public class FormDSLPackageImpl extends EPackageImpl implements FormDSLPackage
    * @generated
    */
   @Override
-  public EClass getGreeting()
+  public EClass getInput()
   {
-    return greetingEClass;
+    return inputEClass;
   }
 
   /**
@@ -139,9 +163,97 @@ public class FormDSLPackageImpl extends EPackageImpl implements FormDSLPackage
    * @generated
    */
   @Override
-  public EAttribute getGreeting_Name()
+  public EReference getInput_Type()
   {
-    return (EAttribute)greetingEClass.getEStructuralFeatures().get(0);
+    return (EReference)inputEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getInput_Name()
+  {
+    return (EReference)inputEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getInput_Expression()
+  {
+    return (EReference)inputEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getType()
+  {
+    return typeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getType_Text()
+  {
+    return (EAttribute)typeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getName_()
+  {
+    return nameEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getName_Text()
+  {
+    return (EAttribute)nameEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getExpression()
+  {
+    return expressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getExpression_Text()
+  {
+    return (EAttribute)expressionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -175,11 +287,22 @@ public class FormDSLPackageImpl extends EPackageImpl implements FormDSLPackage
     isCreated = true;
 
     // Create classes and their features
-    modelEClass = createEClass(MODEL);
-    createEReference(modelEClass, MODEL__GREETINGS);
+    formEClass = createEClass(FORM);
+    createEReference(formEClass, FORM__CONTENT);
 
-    greetingEClass = createEClass(GREETING);
-    createEAttribute(greetingEClass, GREETING__NAME);
+    inputEClass = createEClass(INPUT);
+    createEReference(inputEClass, INPUT__TYPE);
+    createEReference(inputEClass, INPUT__NAME);
+    createEReference(inputEClass, INPUT__EXPRESSION);
+
+    typeEClass = createEClass(TYPE);
+    createEAttribute(typeEClass, TYPE__TEXT);
+
+    nameEClass = createEClass(NAME);
+    createEAttribute(nameEClass, NAME__TEXT);
+
+    expressionEClass = createEClass(EXPRESSION);
+    createEAttribute(expressionEClass, EXPRESSION__TEXT);
   }
 
   /**
@@ -213,11 +336,22 @@ public class FormDSLPackageImpl extends EPackageImpl implements FormDSLPackage
     // Add supertypes to classes
 
     // Initialize classes and features; add operations and parameters
-    initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getModel_Greetings(), this.getGreeting(), null, "greetings", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(formEClass, Form.class, "Form", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getForm_Content(), this.getInput(), null, "content", null, 0, -1, Form.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(greetingEClass, Greeting.class, "Greeting", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getGreeting_Name(), ecorePackage.getEString(), "name", null, 0, 1, Greeting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(inputEClass, Input.class, "Input", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getInput_Type(), this.getType(), null, "type", null, 0, 1, Input.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getInput_Name(), this.getName_(), null, "name", null, 0, 1, Input.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getInput_Expression(), this.getExpression(), null, "expression", null, 0, 1, Input.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(typeEClass, Type.class, "Type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getType_Text(), ecorePackage.getEString(), "text", null, 0, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(nameEClass, Name.class, "Name", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getName_Text(), ecorePackage.getEString(), "text", null, 0, 1, Name.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getExpression_Text(), ecorePackage.getEString(), "text", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);
