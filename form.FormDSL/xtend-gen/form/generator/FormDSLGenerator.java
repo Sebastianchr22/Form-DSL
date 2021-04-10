@@ -3,15 +3,19 @@
  */
 package form.generator;
 
-import com.google.common.base.Objects;
 import com.google.common.collect.Iterators;
 import form.formDSL.Expression;
+import form.formDSL.Focus;
 import form.formDSL.Form;
 import form.formDSL.Generic;
+import form.formDSL.GreaterThanInclusive;
 import form.formDSL.Input;
+import form.formDSL.Is;
+import form.formDSL.Length;
 import form.formDSL.LongText;
 import form.formDSL.Money;
 import form.formDSL.Name;
+import form.formDSL.Optional;
 import form.formDSL.ShortText;
 import form.formDSL.StringNumber;
 import form.formDSL.Type;
@@ -31,6 +35,12 @@ import org.eclipse.xtext.generator.IGeneratorContext;
  */
 @SuppressWarnings("all")
 public class FormDSLGenerator extends AbstractGenerator {
+  private String formClass = "form-control form-control-sm";
+  
+  private boolean isRequired = true;
+  
+  private boolean hasFocus = false;
+  
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     final Form form = Iterators.<Form>filter(resource.getAllContents(), Form.class).next();
@@ -40,9 +50,11 @@ public class FormDSLGenerator extends AbstractGenerator {
   protected CharSequence _compute(final Input input) {
     CharSequence _xblockexpression = null;
     {
+      this.hasFocus = false;
+      this.isRequired = true;
       EList<Expression> _expression = input.getExpression();
       for (final Expression exp : _expression) {
-        System.out.println(exp.getText());
+        this.handleExp(exp);
       }
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("<label class=\"form-label\">");
@@ -58,7 +70,45 @@ public class FormDSLGenerator extends AbstractGenerator {
     return _xblockexpression;
   }
   
-  private String formClass = "form-control form-control-sm";
+  protected void _handleExp(final Optional exp) {
+    this.isRequired = false;
+  }
+  
+  protected void _handleExp(final Focus exp) {
+    this.hasFocus = true;
+  }
+  
+  protected void _handleExp(final Is exp) {
+    System.out.println("Is ");
+    this.handleExp(exp.getComp());
+    System.out.println(exp.getValue());
+  }
+  
+  protected void _handleExp(final Length exp) {
+    System.out.println("Length ");
+  }
+  
+  protected void _handleExp(final GreaterThanInclusive exp) {
+    System.out.println(">= ");
+  }
+  
+  public CharSequence handleNonMathExp() {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      if (this.isRequired) {
+        _builder.append(" required ");
+      }
+    }
+    _builder.append(" ");
+    _builder.newLineIfNotEmpty();
+    {
+      if (this.hasFocus) {
+        _builder.append(" autofocus ");
+      }
+    }
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
   
   protected CharSequence _compute(final Generic type, final Name name) {
     StringConcatenation _builder = new StringConcatenation();
@@ -72,7 +122,10 @@ public class FormDSLGenerator extends AbstractGenerator {
     _builder.append("\" placeholder=\"");
     String _text_1 = name.getText();
     _builder.append(_text_1);
-    _builder.append("\">");
+    _builder.append("\" ");
+    CharSequence _handleNonMathExp = this.handleNonMathExp();
+    _builder.append(_handleNonMathExp);
+    _builder.append(">");
     return _builder;
   }
   
@@ -85,7 +138,10 @@ public class FormDSLGenerator extends AbstractGenerator {
     _builder.append("\" rows=\"8\" cols=\"50\" placeholder=\"");
     String _text = name.getText();
     _builder.append(_text);
-    _builder.append("\"></textarea>");
+    _builder.append("\" ");
+    CharSequence _handleNonMathExp = this.handleNonMathExp();
+    _builder.append(_handleNonMathExp);
+    _builder.append("></textarea>");
     return _builder;
   }
   
@@ -95,7 +151,10 @@ public class FormDSLGenerator extends AbstractGenerator {
     _builder.append(this.formClass);
     _builder.append("\" type=\"number\" min=\"0.00\" max=\"10000.00\" step=\"0.01\" placeholder=\"0.00\" id=\"");
     _builder.append(name);
-    _builder.append("\">");
+    _builder.append("\" ");
+    CharSequence _handleNonMathExp = this.handleNonMathExp();
+    _builder.append(_handleNonMathExp);
+    _builder.append(">");
     return _builder;
   }
   
@@ -108,7 +167,10 @@ public class FormDSLGenerator extends AbstractGenerator {
     _builder.append("\" placeholder=\"");
     String _text = name.getText();
     _builder.append(_text);
-    _builder.append("\">");
+    _builder.append("\" ");
+    CharSequence _handleNonMathExp = this.handleNonMathExp();
+    _builder.append(_handleNonMathExp);
+    _builder.append(">");
     return _builder;
   }
   
@@ -139,10 +201,6 @@ public class FormDSLGenerator extends AbstractGenerator {
         _builder.append("\t");
         CharSequence _compute = this.compute(input);
         _builder.append(_compute, "\t");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        CharSequence _handleOptional = this.handleOptional(input);
-        _builder.append(_handleOptional, "\t");
         _builder.newLineIfNotEmpty();
       }
     }
@@ -197,67 +255,6 @@ public class FormDSLGenerator extends AbstractGenerator {
     _builder.append("</script>");
     _builder.newLine();
     return _builder;
-  }
-  
-  public CharSequence handleOptional(final Input input) {
-    CharSequence _xblockexpression = null;
-    {
-      boolean required = true;
-      boolean focus = false;
-      StringConcatenation _builder = new StringConcatenation();
-      {
-        EList<Expression> _expression = input.getExpression();
-        for(final Expression exp : _expression) {
-          {
-            boolean _equals = Objects.equal(exp, "optional");
-            if (_equals) {
-              _builder.append(required = false);
-              _builder.newLineIfNotEmpty();
-            } else {
-              boolean _equals_1 = Objects.equal(exp, "focus");
-              if (_equals_1) {
-                _builder.append(focus = true);
-                _builder.newLineIfNotEmpty();
-              }
-            }
-          }
-        }
-      }
-      {
-        if (required) {
-          _builder.append("\t");
-          _builder.append("<script>");
-          _builder.newLine();
-          _builder.append("\t");
-          _builder.append("document.getElementById(\"");
-          Name _name = input.getName();
-          _builder.append(_name, "\t");
-          _builder.append("\").setAttribute(\"required\", \"required\");");
-          _builder.newLineIfNotEmpty();
-          _builder.append("\t");
-          _builder.append("</script>");
-          _builder.newLine();
-        }
-      }
-      {
-        if (focus) {
-          _builder.append("\t");
-          _builder.append("<script>");
-          _builder.newLine();
-          _builder.append("\t");
-          _builder.append("document.getElementById(\"");
-          Name _name_1 = input.getName();
-          _builder.append(_name_1, "\t");
-          _builder.append("\").setAttribute(\"autofocus\", \"autofocus\");");
-          _builder.newLineIfNotEmpty();
-          _builder.append("\t");
-          _builder.append("</script>");
-          _builder.newLine();
-        }
-      }
-      _xblockexpression = _builder;
-    }
-    return _xblockexpression;
   }
   
   public CharSequence startHTML() {
@@ -336,6 +333,28 @@ public class FormDSLGenerator extends AbstractGenerator {
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(input).toString());
+    }
+  }
+  
+  public void handleExp(final EObject exp) {
+    if (exp instanceof Is) {
+      _handleExp((Is)exp);
+      return;
+    } else if (exp instanceof Length) {
+      _handleExp((Length)exp);
+      return;
+    } else if (exp instanceof Focus) {
+      _handleExp((Focus)exp);
+      return;
+    } else if (exp instanceof GreaterThanInclusive) {
+      _handleExp((GreaterThanInclusive)exp);
+      return;
+    } else if (exp instanceof Optional) {
+      _handleExp((Optional)exp);
+      return;
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(exp).toString());
     }
   }
   

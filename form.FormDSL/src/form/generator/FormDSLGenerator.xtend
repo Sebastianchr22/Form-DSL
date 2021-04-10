@@ -17,6 +17,11 @@ import form.formDSL.LongText
 import form.formDSL.Money
 import form.formDSL.StringNumber
 import form.formDSL.ShortText
+import form.formDSL.Optional
+import form.formDSL.Focus
+import form.formDSL.Length
+import form.formDSL.Is
+import form.formDSL.GreaterThanInclusive
 
 /**
  * Generates code from your model files on save.
@@ -25,37 +30,71 @@ import form.formDSL.ShortText
  */
 class FormDSLGenerator extends AbstractGenerator {
 
+	var formClass = "form-control form-control-sm"
+	var isRequired = true;
+	var hasFocus = false;
+	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		val form = resource.allContents.filter(Form).next
 		fsa.generateFile("someFile.html", form.compileClass);
 	}
 
+	
 	def dispatch CharSequence compute(Input input) {
+		hasFocus = false
+		isRequired = true
 		for (Expression exp : input.expression) {
-			System::out.println(exp.text)
+			exp.handleExp
 		}
 		'''
 			<label class="form-label">«input.name.compute»:</label>
 			«compute(input.type, input.name)»
 		'''
 	}
+	
+	def dispatch void handleExp(Optional exp){
+		isRequired = false
+	}
+	
+	def dispatch void handleExp(Focus exp){
+		hasFocus = true
+	}
+	
+	def dispatch void handleExp(Is exp){
+		System::out.println("Is ")
+		exp.comp.handleExp
+		System::out.println(exp.value)
+		//Find a way to generate simple verification method in JS for this property related to the input.
+	}
+	def dispatch void handleExp(Length exp){
+		System::out.println("Length ")
+	}
+	
+	def dispatch void handleExp(GreaterThanInclusive exp){
+		System::out.println(">= ")
+	}
 
-	var formClass = "form-control form-control-sm"
+	def CharSequence handleNonMathExp(){
+		'''
+		«IF isRequired» required «ENDIF» 
+		«IF hasFocus» autofocus «ENDIF»
+		'''
+	}
 
 	def dispatch CharSequence compute(Generic type, Name name) {
-		'''<input class="«formClass»" type="«type.text»" id="«name»" placeholder="«name.text»">'''
+		'''<input class="«formClass»" type="«type.text»" id="«name»" placeholder="«name.text»" «handleNonMathExp»>'''
 	}
 
 	def dispatch CharSequence compute(LongText type, Name name) {
-		'''<textarea class="«formClass»" id="«name»" rows="8" cols="50" placeholder="«name.text»"></textarea>'''
+		'''<textarea class="«formClass»" id="«name»" rows="8" cols="50" placeholder="«name.text»" «handleNonMathExp»></textarea>'''
 	}
 
 	def dispatch CharSequence compute(Money type, Name name) {
-		'''<input class="«formClass»" type="number" min="0.00" max="10000.00" step="0.01" placeholder="0.00" id="«name»">'''
+		'''<input class="«formClass»" type="number" min="0.00" max="10000.00" step="0.01" placeholder="0.00" id="«name»" «handleNonMathExp»>'''
 	}
 
 	def dispatch CharSequence compute(ShortText type, Name name) {
-		'''<input class="«formClass»" type="text" id="«name»" placeholder="«name.text»">'''
+		'''<input class="«formClass»" type="text" id="«name»" placeholder="«name.text»" «handleNonMathExp»>'''
 	}
 
 	def dispatch CharSequence compute(StringNumber type, Name name) {
@@ -77,7 +116,6 @@ class FormDSLGenerator extends AbstractGenerator {
 			<form>
 				«FOR input : form.content»
 					«input.compute»
-					«input.handleOptional»
 				«ENDFOR»
 				<br>
 				<input type="submit" class="btn btn-primary" value="Submit" onClick="submitHandler()">
@@ -103,31 +141,6 @@ class FormDSLGenerator extends AbstractGenerator {
 			
 			</script>
 		'''
-	}
-
-	def CharSequence handleOptional(Input input) {
-		var required = true;
-		var focus = false
-		'''
-			«FOR exp : input.expression»
-				«IF exp == "optional"»
-					«required=false»
-				«ELSEIF exp == "focus"»
-					«focus=true»
-				«ENDIF»
-				«ENDFOR»
-				«IF required»
-					<script>
-					document.getElementById("«input.name»").setAttribute("required", "required");
-					</script>
-				«ENDIF»
-				«IF focus»
-					<script>
-					document.getElementById("«input.name»").setAttribute("autofocus", "autofocus");
-					</script>
-				«ENDIF»
-		'''
-
 	}
 
 	def CharSequence startHTML() {

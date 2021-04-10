@@ -31,10 +31,14 @@
   <eClassifiers xsi:type="ecore:EClass" name="Money" eSuperTypes="#//Type"/>
   <eClassifiers xsi:type="ecore:EClass" name="LongText" eSuperTypes="#//Type"/>
   <eClassifiers xsi:type="ecore:EClass" name="StringNumber" eSuperTypes="#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Optional" eSuperTypes="#//Expression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Focus" eSuperTypes="#//Expression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Is" eSuperTypes="#//Exp"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Length" eSuperTypes="#//Exp"/>
   <eClassifiers xsi:type="ecore:EClass" name="LessThan" eSuperTypes="#//Comparison"/>
   <eClassifiers xsi:type="ecore:EClass" name="GreaterThan" eSuperTypes="#//Comparison"/>
-  <eClassifiers xsi:type="ecore:EClass" name="GreaterThaninclusive" eSuperTypes="#//Comparison"/>
-  <eClassifiers xsi:type="ecore:EClass" name="LessThanInclusive" eSuperTypes="#//Comparison"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LessThaninclusive" eSuperTypes="#//Comparison"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GreaterThanInclusive" eSuperTypes="#//Comparison"/>
   <eClassifiers xsi:type="ecore:EClass" name="Exactly" eSuperTypes="#//Comparison"/>
   <eClassifiers xsi:type="ecore:EClass" name="Not" eSuperTypes="#//Comparison"/>
 </ecore:EPackage>

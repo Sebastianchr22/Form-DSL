@@ -992,23 +992,23 @@ public class InternalFormDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleExpression"
-    // InternalFormDSL.g:417:1: ruleExpression returns [EObject current=null] : ( ( (lv_text_0_0= 'optional' ) ) | ( (lv_text_1_0= 'focus' ) ) | this_Exp_2= ruleExp ) ;
+    // InternalFormDSL.g:417:1: ruleExpression returns [EObject current=null] : ( ( () ( (lv_text_1_0= 'optional' ) ) ) | ( () ( (lv_text_3_0= 'focus' ) ) ) | this_Exp_4= ruleExp ) ;
     public final EObject ruleExpression() throws RecognitionException {
         EObject current = null;
 
-        Token lv_text_0_0=null;
         Token lv_text_1_0=null;
-        EObject this_Exp_2 = null;
+        Token lv_text_3_0=null;
+        EObject this_Exp_4 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalFormDSL.g:423:2: ( ( ( (lv_text_0_0= 'optional' ) ) | ( (lv_text_1_0= 'focus' ) ) | this_Exp_2= ruleExp ) )
-            // InternalFormDSL.g:424:2: ( ( (lv_text_0_0= 'optional' ) ) | ( (lv_text_1_0= 'focus' ) ) | this_Exp_2= ruleExp )
+            // InternalFormDSL.g:423:2: ( ( ( () ( (lv_text_1_0= 'optional' ) ) ) | ( () ( (lv_text_3_0= 'focus' ) ) ) | this_Exp_4= ruleExp ) )
+            // InternalFormDSL.g:424:2: ( ( () ( (lv_text_1_0= 'optional' ) ) ) | ( () ( (lv_text_3_0= 'focus' ) ) ) | this_Exp_4= ruleExp )
             {
-            // InternalFormDSL.g:424:2: ( ( (lv_text_0_0= 'optional' ) ) | ( (lv_text_1_0= 'focus' ) ) | this_Exp_2= ruleExp )
+            // InternalFormDSL.g:424:2: ( ( () ( (lv_text_1_0= 'optional' ) ) ) | ( () ( (lv_text_3_0= 'focus' ) ) ) | this_Exp_4= ruleExp )
             int alt4=3;
             switch ( input.LA(1) ) {
             case 19:
@@ -1036,24 +1036,41 @@ public class InternalFormDSLParser extends AbstractInternalAntlrParser {
 
             switch (alt4) {
                 case 1 :
-                    // InternalFormDSL.g:425:3: ( (lv_text_0_0= 'optional' ) )
+                    // InternalFormDSL.g:425:3: ( () ( (lv_text_1_0= 'optional' ) ) )
                     {
-                    // InternalFormDSL.g:425:3: ( (lv_text_0_0= 'optional' ) )
-                    // InternalFormDSL.g:426:4: (lv_text_0_0= 'optional' )
+                    // InternalFormDSL.g:425:3: ( () ( (lv_text_1_0= 'optional' ) ) )
+                    // InternalFormDSL.g:426:4: () ( (lv_text_1_0= 'optional' ) )
                     {
-                    // InternalFormDSL.g:426:4: (lv_text_0_0= 'optional' )
-                    // InternalFormDSL.g:427:5: lv_text_0_0= 'optional'
+                    // InternalFormDSL.g:426:4: ()
+                    // InternalFormDSL.g:427:5: 
                     {
-                    lv_text_0_0=(Token)match(input,19,FOLLOW_2); 
 
-                    					newLeafNode(lv_text_0_0, grammarAccess.getExpressionAccess().getTextOptionalKeyword_0_0());
+                    					current = forceCreateModelElement(
+                    						grammarAccess.getExpressionAccess().getOptionalAction_0_0(),
+                    						current);
                     				
 
-                    					if (current==null) {
-                    						current = createModelElement(grammarAccess.getExpressionRule());
-                    					}
-                    					setWithLastConsumed(current, "text", lv_text_0_0, "optional");
-                    				
+                    }
+
+                    // InternalFormDSL.g:433:4: ( (lv_text_1_0= 'optional' ) )
+                    // InternalFormDSL.g:434:5: (lv_text_1_0= 'optional' )
+                    {
+                    // InternalFormDSL.g:434:5: (lv_text_1_0= 'optional' )
+                    // InternalFormDSL.g:435:6: lv_text_1_0= 'optional'
+                    {
+                    lv_text_1_0=(Token)match(input,19,FOLLOW_2); 
+
+                    						newLeafNode(lv_text_1_0, grammarAccess.getExpressionAccess().getTextOptionalKeyword_0_1_0());
+                    					
+
+                    						if (current==null) {
+                    							current = createModelElement(grammarAccess.getExpressionRule());
+                    						}
+                    						setWithLastConsumed(current, "text", lv_text_1_0, "optional");
+                    					
+
+                    }
+
 
                     }
 
@@ -1064,24 +1081,41 @@ public class InternalFormDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalFormDSL.g:440:3: ( (lv_text_1_0= 'focus' ) )
+                    // InternalFormDSL.g:449:3: ( () ( (lv_text_3_0= 'focus' ) ) )
                     {
-                    // InternalFormDSL.g:440:3: ( (lv_text_1_0= 'focus' ) )
-                    // InternalFormDSL.g:441:4: (lv_text_1_0= 'focus' )
+                    // InternalFormDSL.g:449:3: ( () ( (lv_text_3_0= 'focus' ) ) )
+                    // InternalFormDSL.g:450:4: () ( (lv_text_3_0= 'focus' ) )
                     {
-                    // InternalFormDSL.g:441:4: (lv_text_1_0= 'focus' )
-                    // InternalFormDSL.g:442:5: lv_text_1_0= 'focus'
+                    // InternalFormDSL.g:450:4: ()
+                    // InternalFormDSL.g:451:5: 
                     {
-                    lv_text_1_0=(Token)match(input,20,FOLLOW_2); 
 
-                    					newLeafNode(lv_text_1_0, grammarAccess.getExpressionAccess().getTextFocusKeyword_1_0());
+                    					current = forceCreateModelElement(
+                    						grammarAccess.getExpressionAccess().getFocusAction_1_0(),
+                    						current);
                     				
 
-                    					if (current==null) {
-                    						current = createModelElement(grammarAccess.getExpressionRule());
-                    					}
-                    					setWithLastConsumed(current, "text", lv_text_1_0, "focus");
-                    				
+                    }
+
+                    // InternalFormDSL.g:457:4: ( (lv_text_3_0= 'focus' ) )
+                    // InternalFormDSL.g:458:5: (lv_text_3_0= 'focus' )
+                    {
+                    // InternalFormDSL.g:458:5: (lv_text_3_0= 'focus' )
+                    // InternalFormDSL.g:459:6: lv_text_3_0= 'focus'
+                    {
+                    lv_text_3_0=(Token)match(input,20,FOLLOW_2); 
+
+                    						newLeafNode(lv_text_3_0, grammarAccess.getExpressionAccess().getTextFocusKeyword_1_1_0());
+                    					
+
+                    						if (current==null) {
+                    							current = createModelElement(grammarAccess.getExpressionRule());
+                    						}
+                    						setWithLastConsumed(current, "text", lv_text_3_0, "focus");
+                    					
+
+                    }
+
 
                     }
 
@@ -1092,18 +1126,18 @@ public class InternalFormDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalFormDSL.g:455:3: this_Exp_2= ruleExp
+                    // InternalFormDSL.g:473:3: this_Exp_4= ruleExp
                     {
 
                     			newCompositeNode(grammarAccess.getExpressionAccess().getExpParserRuleCall_2());
                     		
                     pushFollow(FOLLOW_2);
-                    this_Exp_2=ruleExp();
+                    this_Exp_4=ruleExp();
 
                     state._fsp--;
 
 
-                    			current = this_Exp_2;
+                    			current = this_Exp_4;
                     			afterParserOrEnumRuleCall();
                     		
 
@@ -1132,7 +1166,7 @@ public class InternalFormDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleExp"
-    // InternalFormDSL.g:467:1: entryRuleExp returns [EObject current=null] : iv_ruleExp= ruleExp EOF ;
+    // InternalFormDSL.g:485:1: entryRuleExp returns [EObject current=null] : iv_ruleExp= ruleExp EOF ;
     public final EObject entryRuleExp() throws RecognitionException {
         EObject current = null;
 
@@ -1140,8 +1174,8 @@ public class InternalFormDSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalFormDSL.g:467:44: (iv_ruleExp= ruleExp EOF )
-            // InternalFormDSL.g:468:2: iv_ruleExp= ruleExp EOF
+            // InternalFormDSL.g:485:44: (iv_ruleExp= ruleExp EOF )
+            // InternalFormDSL.g:486:2: iv_ruleExp= ruleExp EOF
             {
              newCompositeNode(grammarAccess.getExpRule()); 
             pushFollow(FOLLOW_1);
@@ -1168,27 +1202,27 @@ public class InternalFormDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleExp"
-    // InternalFormDSL.g:474:1: ruleExp returns [EObject current=null] : ( ( ( (lv_text_0_0= 'is' ) ) | ( (lv_text_1_0= 'length' ) ) ) ( (lv_comp_2_0= ruleComparison ) ) ( (lv_value_3_0= RULE_INT ) ) ) ;
+    // InternalFormDSL.g:492:1: ruleExp returns [EObject current=null] : ( ( ( () ( (lv_text_1_0= 'is' ) ) ) | ( () ( (lv_text_3_0= 'length' ) ) ) ) ( (lv_comp_4_0= ruleComparison ) ) ( (lv_value_5_0= RULE_INT ) ) ) ;
     public final EObject ruleExp() throws RecognitionException {
         EObject current = null;
 
-        Token lv_text_0_0=null;
         Token lv_text_1_0=null;
-        Token lv_value_3_0=null;
-        EObject lv_comp_2_0 = null;
+        Token lv_text_3_0=null;
+        Token lv_value_5_0=null;
+        EObject lv_comp_4_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalFormDSL.g:480:2: ( ( ( ( (lv_text_0_0= 'is' ) ) | ( (lv_text_1_0= 'length' ) ) ) ( (lv_comp_2_0= ruleComparison ) ) ( (lv_value_3_0= RULE_INT ) ) ) )
-            // InternalFormDSL.g:481:2: ( ( ( (lv_text_0_0= 'is' ) ) | ( (lv_text_1_0= 'length' ) ) ) ( (lv_comp_2_0= ruleComparison ) ) ( (lv_value_3_0= RULE_INT ) ) )
+            // InternalFormDSL.g:498:2: ( ( ( ( () ( (lv_text_1_0= 'is' ) ) ) | ( () ( (lv_text_3_0= 'length' ) ) ) ) ( (lv_comp_4_0= ruleComparison ) ) ( (lv_value_5_0= RULE_INT ) ) ) )
+            // InternalFormDSL.g:499:2: ( ( ( () ( (lv_text_1_0= 'is' ) ) ) | ( () ( (lv_text_3_0= 'length' ) ) ) ) ( (lv_comp_4_0= ruleComparison ) ) ( (lv_value_5_0= RULE_INT ) ) )
             {
-            // InternalFormDSL.g:481:2: ( ( ( (lv_text_0_0= 'is' ) ) | ( (lv_text_1_0= 'length' ) ) ) ( (lv_comp_2_0= ruleComparison ) ) ( (lv_value_3_0= RULE_INT ) ) )
-            // InternalFormDSL.g:482:3: ( ( (lv_text_0_0= 'is' ) ) | ( (lv_text_1_0= 'length' ) ) ) ( (lv_comp_2_0= ruleComparison ) ) ( (lv_value_3_0= RULE_INT ) )
+            // InternalFormDSL.g:499:2: ( ( ( () ( (lv_text_1_0= 'is' ) ) ) | ( () ( (lv_text_3_0= 'length' ) ) ) ) ( (lv_comp_4_0= ruleComparison ) ) ( (lv_value_5_0= RULE_INT ) ) )
+            // InternalFormDSL.g:500:3: ( ( () ( (lv_text_1_0= 'is' ) ) ) | ( () ( (lv_text_3_0= 'length' ) ) ) ) ( (lv_comp_4_0= ruleComparison ) ) ( (lv_value_5_0= RULE_INT ) )
             {
-            // InternalFormDSL.g:482:3: ( ( (lv_text_0_0= 'is' ) ) | ( (lv_text_1_0= 'length' ) ) )
+            // InternalFormDSL.g:500:3: ( ( () ( (lv_text_1_0= 'is' ) ) ) | ( () ( (lv_text_3_0= 'length' ) ) ) )
             int alt5=2;
             int LA5_0 = input.LA(1);
 
@@ -1206,24 +1240,41 @@ public class InternalFormDSLParser extends AbstractInternalAntlrParser {
             }
             switch (alt5) {
                 case 1 :
-                    // InternalFormDSL.g:483:4: ( (lv_text_0_0= 'is' ) )
+                    // InternalFormDSL.g:501:4: ( () ( (lv_text_1_0= 'is' ) ) )
                     {
-                    // InternalFormDSL.g:483:4: ( (lv_text_0_0= 'is' ) )
-                    // InternalFormDSL.g:484:5: (lv_text_0_0= 'is' )
+                    // InternalFormDSL.g:501:4: ( () ( (lv_text_1_0= 'is' ) ) )
+                    // InternalFormDSL.g:502:5: () ( (lv_text_1_0= 'is' ) )
                     {
-                    // InternalFormDSL.g:484:5: (lv_text_0_0= 'is' )
-                    // InternalFormDSL.g:485:6: lv_text_0_0= 'is'
+                    // InternalFormDSL.g:502:5: ()
+                    // InternalFormDSL.g:503:6: 
                     {
-                    lv_text_0_0=(Token)match(input,21,FOLLOW_6); 
 
-                    						newLeafNode(lv_text_0_0, grammarAccess.getExpAccess().getTextIsKeyword_0_0_0());
+                    						current = forceCreateModelElement(
+                    							grammarAccess.getExpAccess().getIsAction_0_0_0(),
+                    							current);
                     					
 
-                    						if (current==null) {
-                    							current = createModelElement(grammarAccess.getExpRule());
-                    						}
-                    						setWithLastConsumed(current, "text", lv_text_0_0, "is");
-                    					
+                    }
+
+                    // InternalFormDSL.g:509:5: ( (lv_text_1_0= 'is' ) )
+                    // InternalFormDSL.g:510:6: (lv_text_1_0= 'is' )
+                    {
+                    // InternalFormDSL.g:510:6: (lv_text_1_0= 'is' )
+                    // InternalFormDSL.g:511:7: lv_text_1_0= 'is'
+                    {
+                    lv_text_1_0=(Token)match(input,21,FOLLOW_6); 
+
+                    							newLeafNode(lv_text_1_0, grammarAccess.getExpAccess().getTextIsKeyword_0_0_1_0());
+                    						
+
+                    							if (current==null) {
+                    								current = createModelElement(grammarAccess.getExpRule());
+                    							}
+                    							setWithLastConsumed(current, "text", lv_text_1_0, "is");
+                    						
+
+                    }
+
 
                     }
 
@@ -1234,24 +1285,41 @@ public class InternalFormDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalFormDSL.g:498:4: ( (lv_text_1_0= 'length' ) )
+                    // InternalFormDSL.g:525:4: ( () ( (lv_text_3_0= 'length' ) ) )
                     {
-                    // InternalFormDSL.g:498:4: ( (lv_text_1_0= 'length' ) )
-                    // InternalFormDSL.g:499:5: (lv_text_1_0= 'length' )
+                    // InternalFormDSL.g:525:4: ( () ( (lv_text_3_0= 'length' ) ) )
+                    // InternalFormDSL.g:526:5: () ( (lv_text_3_0= 'length' ) )
                     {
-                    // InternalFormDSL.g:499:5: (lv_text_1_0= 'length' )
-                    // InternalFormDSL.g:500:6: lv_text_1_0= 'length'
+                    // InternalFormDSL.g:526:5: ()
+                    // InternalFormDSL.g:527:6: 
                     {
-                    lv_text_1_0=(Token)match(input,22,FOLLOW_6); 
 
-                    						newLeafNode(lv_text_1_0, grammarAccess.getExpAccess().getTextLengthKeyword_0_1_0());
+                    						current = forceCreateModelElement(
+                    							grammarAccess.getExpAccess().getLengthAction_0_1_0(),
+                    							current);
                     					
 
-                    						if (current==null) {
-                    							current = createModelElement(grammarAccess.getExpRule());
-                    						}
-                    						setWithLastConsumed(current, "text", lv_text_1_0, "length");
-                    					
+                    }
+
+                    // InternalFormDSL.g:533:5: ( (lv_text_3_0= 'length' ) )
+                    // InternalFormDSL.g:534:6: (lv_text_3_0= 'length' )
+                    {
+                    // InternalFormDSL.g:534:6: (lv_text_3_0= 'length' )
+                    // InternalFormDSL.g:535:7: lv_text_3_0= 'length'
+                    {
+                    lv_text_3_0=(Token)match(input,22,FOLLOW_6); 
+
+                    							newLeafNode(lv_text_3_0, grammarAccess.getExpAccess().getTextLengthKeyword_0_1_1_0());
+                    						
+
+                    							if (current==null) {
+                    								current = createModelElement(grammarAccess.getExpRule());
+                    							}
+                    							setWithLastConsumed(current, "text", lv_text_3_0, "length");
+                    						
+
+                    }
+
 
                     }
 
@@ -1264,17 +1332,17 @@ public class InternalFormDSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalFormDSL.g:513:3: ( (lv_comp_2_0= ruleComparison ) )
-            // InternalFormDSL.g:514:4: (lv_comp_2_0= ruleComparison )
+            // InternalFormDSL.g:549:3: ( (lv_comp_4_0= ruleComparison ) )
+            // InternalFormDSL.g:550:4: (lv_comp_4_0= ruleComparison )
             {
-            // InternalFormDSL.g:514:4: (lv_comp_2_0= ruleComparison )
-            // InternalFormDSL.g:515:5: lv_comp_2_0= ruleComparison
+            // InternalFormDSL.g:550:4: (lv_comp_4_0= ruleComparison )
+            // InternalFormDSL.g:551:5: lv_comp_4_0= ruleComparison
             {
 
             					newCompositeNode(grammarAccess.getExpAccess().getCompComparisonParserRuleCall_1_0());
             				
             pushFollow(FOLLOW_7);
-            lv_comp_2_0=ruleComparison();
+            lv_comp_4_0=ruleComparison();
 
             state._fsp--;
 
@@ -1285,7 +1353,7 @@ public class InternalFormDSLParser extends AbstractInternalAntlrParser {
             					set(
             						current,
             						"comp",
-            						lv_comp_2_0,
+            						lv_comp_4_0,
             						"form.FormDSL.Comparison");
             					afterParserOrEnumRuleCall();
             				
@@ -1295,15 +1363,15 @@ public class InternalFormDSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalFormDSL.g:532:3: ( (lv_value_3_0= RULE_INT ) )
-            // InternalFormDSL.g:533:4: (lv_value_3_0= RULE_INT )
+            // InternalFormDSL.g:568:3: ( (lv_value_5_0= RULE_INT ) )
+            // InternalFormDSL.g:569:4: (lv_value_5_0= RULE_INT )
             {
-            // InternalFormDSL.g:533:4: (lv_value_3_0= RULE_INT )
-            // InternalFormDSL.g:534:5: lv_value_3_0= RULE_INT
+            // InternalFormDSL.g:569:4: (lv_value_5_0= RULE_INT )
+            // InternalFormDSL.g:570:5: lv_value_5_0= RULE_INT
             {
-            lv_value_3_0=(Token)match(input,RULE_INT,FOLLOW_2); 
+            lv_value_5_0=(Token)match(input,RULE_INT,FOLLOW_2); 
 
-            					newLeafNode(lv_value_3_0, grammarAccess.getExpAccess().getValueINTTerminalRuleCall_2_0());
+            					newLeafNode(lv_value_5_0, grammarAccess.getExpAccess().getValueINTTerminalRuleCall_2_0());
             				
 
             					if (current==null) {
@@ -1312,7 +1380,7 @@ public class InternalFormDSLParser extends AbstractInternalAntlrParser {
             					setWithLastConsumed(
             						current,
             						"value",
-            						lv_value_3_0,
+            						lv_value_5_0,
             						"org.eclipse.xtext.common.Terminals.INT");
             				
 
@@ -1344,7 +1412,7 @@ public class InternalFormDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleComparison"
-    // InternalFormDSL.g:554:1: entryRuleComparison returns [EObject current=null] : iv_ruleComparison= ruleComparison EOF ;
+    // InternalFormDSL.g:590:1: entryRuleComparison returns [EObject current=null] : iv_ruleComparison= ruleComparison EOF ;
     public final EObject entryRuleComparison() throws RecognitionException {
         EObject current = null;
 
@@ -1352,8 +1420,8 @@ public class InternalFormDSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalFormDSL.g:554:51: (iv_ruleComparison= ruleComparison EOF )
-            // InternalFormDSL.g:555:2: iv_ruleComparison= ruleComparison EOF
+            // InternalFormDSL.g:590:51: (iv_ruleComparison= ruleComparison EOF )
+            // InternalFormDSL.g:591:2: iv_ruleComparison= ruleComparison EOF
             {
              newCompositeNode(grammarAccess.getComparisonRule()); 
             pushFollow(FOLLOW_1);
@@ -1380,7 +1448,7 @@ public class InternalFormDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleComparison"
-    // InternalFormDSL.g:561:1: ruleComparison returns [EObject current=null] : ( (otherlv_0= '<' () ) | (otherlv_2= '>' () ) | (otherlv_4= '<=' () ) | (otherlv_6= '>=' () ) | (otherlv_8= '==' () ) | (otherlv_10= '!=' () ) ) ;
+    // InternalFormDSL.g:597:1: ruleComparison returns [EObject current=null] : ( (otherlv_0= '<' () ) | (otherlv_2= '>' () ) | (otherlv_4= '<=' () ) | (otherlv_6= '>=' () ) | (otherlv_8= '==' () ) | (otherlv_10= '!=' () ) ) ;
     public final EObject ruleComparison() throws RecognitionException {
         EObject current = null;
 
@@ -1395,10 +1463,10 @@ public class InternalFormDSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalFormDSL.g:567:2: ( ( (otherlv_0= '<' () ) | (otherlv_2= '>' () ) | (otherlv_4= '<=' () ) | (otherlv_6= '>=' () ) | (otherlv_8= '==' () ) | (otherlv_10= '!=' () ) ) )
-            // InternalFormDSL.g:568:2: ( (otherlv_0= '<' () ) | (otherlv_2= '>' () ) | (otherlv_4= '<=' () ) | (otherlv_6= '>=' () ) | (otherlv_8= '==' () ) | (otherlv_10= '!=' () ) )
+            // InternalFormDSL.g:603:2: ( ( (otherlv_0= '<' () ) | (otherlv_2= '>' () ) | (otherlv_4= '<=' () ) | (otherlv_6= '>=' () ) | (otherlv_8= '==' () ) | (otherlv_10= '!=' () ) ) )
+            // InternalFormDSL.g:604:2: ( (otherlv_0= '<' () ) | (otherlv_2= '>' () ) | (otherlv_4= '<=' () ) | (otherlv_6= '>=' () ) | (otherlv_8= '==' () ) | (otherlv_10= '!=' () ) )
             {
-            // InternalFormDSL.g:568:2: ( (otherlv_0= '<' () ) | (otherlv_2= '>' () ) | (otherlv_4= '<=' () ) | (otherlv_6= '>=' () ) | (otherlv_8= '==' () ) | (otherlv_10= '!=' () ) )
+            // InternalFormDSL.g:604:2: ( (otherlv_0= '<' () ) | (otherlv_2= '>' () ) | (otherlv_4= '<=' () ) | (otherlv_6= '>=' () ) | (otherlv_8= '==' () ) | (otherlv_10= '!=' () ) )
             int alt6=6;
             switch ( input.LA(1) ) {
             case 23:
@@ -1440,17 +1508,17 @@ public class InternalFormDSLParser extends AbstractInternalAntlrParser {
 
             switch (alt6) {
                 case 1 :
-                    // InternalFormDSL.g:569:3: (otherlv_0= '<' () )
+                    // InternalFormDSL.g:605:3: (otherlv_0= '<' () )
                     {
-                    // InternalFormDSL.g:569:3: (otherlv_0= '<' () )
-                    // InternalFormDSL.g:570:4: otherlv_0= '<' ()
+                    // InternalFormDSL.g:605:3: (otherlv_0= '<' () )
+                    // InternalFormDSL.g:606:4: otherlv_0= '<' ()
                     {
                     otherlv_0=(Token)match(input,23,FOLLOW_2); 
 
                     				newLeafNode(otherlv_0, grammarAccess.getComparisonAccess().getLessThanSignKeyword_0_0());
                     			
-                    // InternalFormDSL.g:574:4: ()
-                    // InternalFormDSL.g:575:5: 
+                    // InternalFormDSL.g:610:4: ()
+                    // InternalFormDSL.g:611:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -1467,17 +1535,17 @@ public class InternalFormDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalFormDSL.g:583:3: (otherlv_2= '>' () )
+                    // InternalFormDSL.g:619:3: (otherlv_2= '>' () )
                     {
-                    // InternalFormDSL.g:583:3: (otherlv_2= '>' () )
-                    // InternalFormDSL.g:584:4: otherlv_2= '>' ()
+                    // InternalFormDSL.g:619:3: (otherlv_2= '>' () )
+                    // InternalFormDSL.g:620:4: otherlv_2= '>' ()
                     {
                     otherlv_2=(Token)match(input,24,FOLLOW_2); 
 
                     				newLeafNode(otherlv_2, grammarAccess.getComparisonAccess().getGreaterThanSignKeyword_1_0());
                     			
-                    // InternalFormDSL.g:588:4: ()
-                    // InternalFormDSL.g:589:5: 
+                    // InternalFormDSL.g:624:4: ()
+                    // InternalFormDSL.g:625:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -1494,21 +1562,21 @@ public class InternalFormDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalFormDSL.g:597:3: (otherlv_4= '<=' () )
+                    // InternalFormDSL.g:633:3: (otherlv_4= '<=' () )
                     {
-                    // InternalFormDSL.g:597:3: (otherlv_4= '<=' () )
-                    // InternalFormDSL.g:598:4: otherlv_4= '<=' ()
+                    // InternalFormDSL.g:633:3: (otherlv_4= '<=' () )
+                    // InternalFormDSL.g:634:4: otherlv_4= '<=' ()
                     {
                     otherlv_4=(Token)match(input,25,FOLLOW_2); 
 
                     				newLeafNode(otherlv_4, grammarAccess.getComparisonAccess().getLessThanSignEqualsSignKeyword_2_0());
                     			
-                    // InternalFormDSL.g:602:4: ()
-                    // InternalFormDSL.g:603:5: 
+                    // InternalFormDSL.g:638:4: ()
+                    // InternalFormDSL.g:639:5: 
                     {
 
                     					current = forceCreateModelElement(
-                    						grammarAccess.getComparisonAccess().getGreaterThaninclusiveAction_2_1(),
+                    						grammarAccess.getComparisonAccess().getLessThaninclusiveAction_2_1(),
                     						current);
                     				
 
@@ -1521,21 +1589,21 @@ public class InternalFormDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalFormDSL.g:611:3: (otherlv_6= '>=' () )
+                    // InternalFormDSL.g:647:3: (otherlv_6= '>=' () )
                     {
-                    // InternalFormDSL.g:611:3: (otherlv_6= '>=' () )
-                    // InternalFormDSL.g:612:4: otherlv_6= '>=' ()
+                    // InternalFormDSL.g:647:3: (otherlv_6= '>=' () )
+                    // InternalFormDSL.g:648:4: otherlv_6= '>=' ()
                     {
                     otherlv_6=(Token)match(input,26,FOLLOW_2); 
 
                     				newLeafNode(otherlv_6, grammarAccess.getComparisonAccess().getGreaterThanSignEqualsSignKeyword_3_0());
                     			
-                    // InternalFormDSL.g:616:4: ()
-                    // InternalFormDSL.g:617:5: 
+                    // InternalFormDSL.g:652:4: ()
+                    // InternalFormDSL.g:653:5: 
                     {
 
                     					current = forceCreateModelElement(
-                    						grammarAccess.getComparisonAccess().getLessThanInclusiveAction_3_1(),
+                    						grammarAccess.getComparisonAccess().getGreaterThanInclusiveAction_3_1(),
                     						current);
                     				
 
@@ -1548,17 +1616,17 @@ public class InternalFormDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // InternalFormDSL.g:625:3: (otherlv_8= '==' () )
+                    // InternalFormDSL.g:661:3: (otherlv_8= '==' () )
                     {
-                    // InternalFormDSL.g:625:3: (otherlv_8= '==' () )
-                    // InternalFormDSL.g:626:4: otherlv_8= '==' ()
+                    // InternalFormDSL.g:661:3: (otherlv_8= '==' () )
+                    // InternalFormDSL.g:662:4: otherlv_8= '==' ()
                     {
                     otherlv_8=(Token)match(input,27,FOLLOW_2); 
 
                     				newLeafNode(otherlv_8, grammarAccess.getComparisonAccess().getEqualsSignEqualsSignKeyword_4_0());
                     			
-                    // InternalFormDSL.g:630:4: ()
-                    // InternalFormDSL.g:631:5: 
+                    // InternalFormDSL.g:666:4: ()
+                    // InternalFormDSL.g:667:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -1575,17 +1643,17 @@ public class InternalFormDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // InternalFormDSL.g:639:3: (otherlv_10= '!=' () )
+                    // InternalFormDSL.g:675:3: (otherlv_10= '!=' () )
                     {
-                    // InternalFormDSL.g:639:3: (otherlv_10= '!=' () )
-                    // InternalFormDSL.g:640:4: otherlv_10= '!=' ()
+                    // InternalFormDSL.g:675:3: (otherlv_10= '!=' () )
+                    // InternalFormDSL.g:676:4: otherlv_10= '!=' ()
                     {
                     otherlv_10=(Token)match(input,28,FOLLOW_2); 
 
                     				newLeafNode(otherlv_10, grammarAccess.getComparisonAccess().getExclamationMarkEqualsSignKeyword_5_0());
                     			
-                    // InternalFormDSL.g:644:4: ()
-                    // InternalFormDSL.g:645:5: 
+                    // InternalFormDSL.g:680:4: ()
+                    // InternalFormDSL.g:681:5: 
                     {
 
                     					current = forceCreateModelElement(

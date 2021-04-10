@@ -27,18 +27,18 @@ Name:
 ;
 
 Expression:
-	text="optional" | text="focus" | Exp
+	{Optional}text="optional" | {Focus}text="focus" | Exp
 ;
 
 Exp:
-	(text="is" | text="length") comp=Comparison value=INT 
+	({Is}text="is" | {Length}text="length") comp=Comparison value=INT 
 ;
 
 Comparison:
 	"<" {LessThan} | 
 	">" {GreaterThan} | 
-	"<=" {GreaterThaninclusive} | 
-	">=" {LessThanInclusive} | 
+	"<=" {LessThaninclusive} | 
+	">=" {GreaterThanInclusive} | 
 	"==" {Exactly} | 
 	"!=" {Not}
 ;
