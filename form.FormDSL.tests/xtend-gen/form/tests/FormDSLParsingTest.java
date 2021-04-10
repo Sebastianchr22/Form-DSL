@@ -4,6 +4,7 @@
 package form.tests;
 
 import com.google.inject.Inject;
+import form.tests.FormDSLInjectorProvider;
 import org.eclipse.xtext.testing.InjectWith;
 import org.eclipse.xtext.testing.extensions.InjectionExtension;
 import org.junit.jupiter.api.Test;

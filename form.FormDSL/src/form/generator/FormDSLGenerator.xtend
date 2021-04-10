@@ -31,7 +31,7 @@ class FormDSLGenerator extends AbstractGenerator {
 	}
 
 	def dispatch CharSequence compute(Input input) {
-		for(Expression exp : input.expression){
+		for (Expression exp : input.expression) {
 			System::out.println(exp.text)
 		}
 		'''
@@ -41,23 +41,26 @@ class FormDSLGenerator extends AbstractGenerator {
 	}
 
 	var formClass = "form-control form-control-sm"
-	def dispatch CharSequence compute(Generic type, Name name){
-		'''<input class="«formClass»" type="«type.text»" name="«name»" placeholder="«name.text»">'''
+
+	def dispatch CharSequence compute(Generic type, Name name) {
+		'''<input class="«formClass»" type="«type.text»" id="«name»" placeholder="«name.text»">'''
 	}
-	def dispatch CharSequence compute(LongText type, Name name){
-		'''<textarea class="«formClass»" name="«name»" rows="8" cols="50" placeholder="«name.text»"></textarea>'''
+
+	def dispatch CharSequence compute(LongText type, Name name) {
+		'''<textarea class="«formClass»" id="«name»" rows="8" cols="50" placeholder="«name.text»"></textarea>'''
 	}
-	def dispatch CharSequence compute(Money type, Name name){
-		'''<input class="«formClass»" type="number" min="0.00" max="10000.00" step="0.01" placeholder="0.00" name="«name»">'''
+
+	def dispatch CharSequence compute(Money type, Name name) {
+		'''<input class="«formClass»" type="number" min="0.00" max="10000.00" step="0.01" placeholder="0.00" id="«name»">'''
 	}
-	def dispatch CharSequence compute(ShortText type, Name name){
-		'''<input class="«formClass»" type="text" name="«name»" placeholder="«name.text»">'''
+
+	def dispatch CharSequence compute(ShortText type, Name name) {
+		'''<input class="«formClass»" type="text" id="«name»" placeholder="«name.text»">'''
 	}
-	def dispatch CharSequence compute(StringNumber type, Name name){
+
+	def dispatch CharSequence compute(StringNumber type, Name name) {
 		''''''
 	}
-	
-
 
 	def dispatch CharSequence compute(Name name) {
 		name.text
@@ -74,6 +77,7 @@ class FormDSLGenerator extends AbstractGenerator {
 			<form>
 				«FOR input : form.content»
 					«input.compute»
+					«input.handleOptional»
 				«ENDFOR»
 				<br>
 				<input type="submit" class="btn btn-primary" value="Submit" onClick="submitHandler()">
@@ -96,38 +100,64 @@ class FormDSLGenerator extends AbstractGenerator {
 					//Else
 						//(Give error)?
 			}
+			
 			</script>
 		'''
 	}
 
-	def CharSequence startHTML(){
+	def CharSequence handleOptional(Input input) {
+		var required = true;
+		var focus = false
 		'''
-		<!DOCTYPE html>
-		<html>
-			<head>
-			<style>
-			input{
-				height:45px;
-				width:100%;
-			}
-			</style>
-			<title>Form page demo</title>
-			
-			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-			
-			</head>
-		<body style="background-color:#FEFEFE">
-		    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-			<div style="margin:0 auto; width: 38%; background-color:#FFF; padding:5%; padding-top:6%">
+			«FOR exp : input.expression»
+				«IF exp == "optional"»
+					«required=false»
+				«ELSEIF exp == "focus"»
+					«focus=true»
+				«ENDIF»
+				«ENDFOR»
+				«IF required»
+					<script>
+					document.getElementById("«input.name»").setAttribute("required", "required");
+					</script>
+				«ENDIF»
+				«IF focus»
+					<script>
+					document.getElementById("«input.name»").setAttribute("autofocus", "autofocus");
+					</script>
+				«ENDIF»
+		'''
+
+	}
+
+	def CharSequence startHTML() {
+		'''
+			<!DOCTYPE html>
+			<html>
+				<head>
+				<style>
+				input{
+					height:45px;
+					width:100%;
+				}
+				</style>
+				<title>Form page demo</title>
+				
+				<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+				<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+				
+				</head>
+			<body style="background-color:#FEFEFE">
+			    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+				<div style="margin:0 auto; width: 38%; background-color:#FFF; padding:5%; padding-top:6%">
 		'''
 	}
-	
-	def CharSequence endHTML(){
+
+	def CharSequence endHTML() {
 		'''
-			</div>
-		</body>
-		</html>
+				</div>
+			</body>
+			</html>
 		'''
 	}
 }

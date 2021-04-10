@@ -11,6 +11,12 @@ import form.formDSL.Form
 import form.formDSL.Input
 import form.formDSL.Name
 import form.formDSL.Type
+import form.formDSL.Expression
+import form.formDSL.Generic
+import form.formDSL.LongText
+import form.formDSL.Money
+import form.formDSL.StringNumber
+import form.formDSL.ShortText
 
 /**
  * Generates code from your model files on save.
@@ -21,19 +27,39 @@ class FormDSLGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		val form = resource.allContents.filter(Form).next
-
 		fsa.generateFile("someFile.html", form.compileClass);
 	}
 
 	def dispatch CharSequence compute(Input input) {
-		val type = input.type.compute
-		val name = input.name.compute
+		for (Expression exp : input.expression) {
+			System::out.println(exp.text)
+		}
 		'''
-			<label>«name»:</label>
-			<«input.type.compileInput» placeholder="«name»">
-			
+			<label class="form-label">«input.name.compute»:</label>
+			«compute(input.type, input.name)»
 		'''
-	// "shortText" | "date" | "number" | "money" | "email" | "longText" | "stringNumber"
+	}
+
+	var formClass = "form-control form-control-sm"
+
+	def dispatch CharSequence compute(Generic type, Name name) {
+		'''<input class="«formClass»" type="«type.text»" id="«name»" placeholder="«name.text»">'''
+	}
+
+	def dispatch CharSequence compute(LongText type, Name name) {
+		'''<textarea class="«formClass»" id="«name»" rows="8" cols="50" placeholder="«name.text»"></textarea>'''
+	}
+
+	def dispatch CharSequence compute(Money type, Name name) {
+		'''<input class="«formClass»" type="number" min="0.00" max="10000.00" step="0.01" placeholder="0.00" id="«name»">'''
+	}
+
+	def dispatch CharSequence compute(ShortText type, Name name) {
+		'''<input class="«formClass»" type="text" id="«name»" placeholder="«name.text»">'''
+	}
+
+	def dispatch CharSequence compute(StringNumber type, Name name) {
+		''''''
 	}
 
 	def dispatch CharSequence compute(Name name) {
@@ -42,26 +68,23 @@ class FormDSLGenerator extends AbstractGenerator {
 
 	def dispatch String compute(Type type) {
 		type.text
-//<input type="number" min="0" max="10000" step="1" name="Broker_Fees" id="broker_fees" required="required">
-	}
-
-	def CharSequence compileInput(Type type) {
-		switch (type.text) {
-			case "longText": '''textarea rows="8" cols="50"'''
-			case "shortText": '''input type="text"'''
-		}
 	}
 
 	def CharSequence compileClass(Form form) {
 		'''
+			«startHTML()»
+			
 			<form>
 				«FOR input : form.content»
 					«input.compute»
-					<br>
+					«input.handleOptional»
 				«ENDFOR»
-				<input type="submit" value="submit" onClick="submitHandler()">
+				<br>
+				<input type="submit" class="btn btn-primary" value="Submit" onClick="submitHandler()">
 			</form>
+			
 			«form.compilejs»
+			«endHTML»
 		'''
 	}
 
@@ -69,10 +92,72 @@ class FormDSLGenerator extends AbstractGenerator {
 		'''
 			<script>
 			function submitHandler(){
-				//todo
+				//When submit
+					//foreach expression
+						//Is hold?
+					//If all is hold
+						//Submit
+					//Else
+						//(Give error)?
 			}
+			
 			</script>
 		'''
 	}
 
+	def CharSequence handleOptional(Input input) {
+		var required = true;
+		var focus = false
+		'''
+			«FOR exp : input.expression»
+				«IF exp == "optional"»
+					«required=false»
+				«ELSEIF exp == "focus"»
+					«focus=true»
+				«ENDIF»
+				«ENDFOR»
+				«IF required»
+					<script>
+					document.getElementById("«input.name»").setAttribute("required", "required");
+					</script>
+				«ENDIF»
+				«IF focus»
+					<script>
+					document.getElementById("«input.name»").setAttribute("autofocus", "autofocus");
+					</script>
+				«ENDIF»
+		'''
+
+	}
+
+	def CharSequence startHTML() {
+		'''
+			<!DOCTYPE html>
+			<html>
+				<head>
+				<style>
+				input{
+					height:45px;
+					width:100%;
+				}
+				</style>
+				<title>Form page demo</title>
+				
+				<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+				<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+				
+				</head>
+			<body style="background-color:#FEFEFE">
+			    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+				<div style="margin:0 auto; width: 38%; background-color:#FFF; padding:5%; padding-top:6%">
+		'''
+	}
+
+	def CharSequence endHTML() {
+		'''
+				</div>
+			</body>
+			</html>
+		'''
+	}
 }

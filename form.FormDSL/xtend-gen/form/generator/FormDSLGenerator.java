@@ -3,6 +3,7 @@
  */
 package form.generator;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Iterators;
 import form.formDSL.Expression;
 import form.formDSL.Form;
@@ -66,7 +67,7 @@ public class FormDSLGenerator extends AbstractGenerator {
     _builder.append("\" type=\"");
     String _text = type.getText();
     _builder.append(_text);
-    _builder.append("\" name=\"");
+    _builder.append("\" id=\"");
     _builder.append(name);
     _builder.append("\" placeholder=\"");
     String _text_1 = name.getText();
@@ -79,7 +80,7 @@ public class FormDSLGenerator extends AbstractGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<textarea class=\"");
     _builder.append(this.formClass);
-    _builder.append("\" name=\"");
+    _builder.append("\" id=\"");
     _builder.append(name);
     _builder.append("\" rows=\"8\" cols=\"50\" placeholder=\"");
     String _text = name.getText();
@@ -92,7 +93,7 @@ public class FormDSLGenerator extends AbstractGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<input class=\"");
     _builder.append(this.formClass);
-    _builder.append("\" type=\"number\" min=\"0.00\" max=\"10000.00\" step=\"0.01\" placeholder=\"0.00\" name=\"");
+    _builder.append("\" type=\"number\" min=\"0.00\" max=\"10000.00\" step=\"0.01\" placeholder=\"0.00\" id=\"");
     _builder.append(name);
     _builder.append("\">");
     return _builder;
@@ -102,7 +103,7 @@ public class FormDSLGenerator extends AbstractGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<input class=\"");
     _builder.append(this.formClass);
-    _builder.append("\" type=\"text\" name=\"");
+    _builder.append("\" type=\"text\" id=\"");
     _builder.append(name);
     _builder.append("\" placeholder=\"");
     String _text = name.getText();
@@ -138,6 +139,10 @@ public class FormDSLGenerator extends AbstractGenerator {
         _builder.append("\t");
         CharSequence _compute = this.compute(input);
         _builder.append(_compute, "\t");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        CharSequence _handleOptional = this.handleOptional(input);
+        _builder.append(_handleOptional, "\t");
         _builder.newLineIfNotEmpty();
       }
     }
@@ -188,9 +193,71 @@ public class FormDSLGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
+    _builder.newLine();
     _builder.append("</script>");
     _builder.newLine();
     return _builder;
+  }
+  
+  public CharSequence handleOptional(final Input input) {
+    CharSequence _xblockexpression = null;
+    {
+      boolean required = true;
+      boolean focus = false;
+      StringConcatenation _builder = new StringConcatenation();
+      {
+        EList<Expression> _expression = input.getExpression();
+        for(final Expression exp : _expression) {
+          {
+            boolean _equals = Objects.equal(exp, "optional");
+            if (_equals) {
+              _builder.append(required = false);
+              _builder.newLineIfNotEmpty();
+            } else {
+              boolean _equals_1 = Objects.equal(exp, "focus");
+              if (_equals_1) {
+                _builder.append(focus = true);
+                _builder.newLineIfNotEmpty();
+              }
+            }
+          }
+        }
+      }
+      {
+        if (required) {
+          _builder.append("\t");
+          _builder.append("<script>");
+          _builder.newLine();
+          _builder.append("\t");
+          _builder.append("document.getElementById(\"");
+          Name _name = input.getName();
+          _builder.append(_name, "\t");
+          _builder.append("\").setAttribute(\"required\", \"required\");");
+          _builder.newLineIfNotEmpty();
+          _builder.append("\t");
+          _builder.append("</script>");
+          _builder.newLine();
+        }
+      }
+      {
+        if (focus) {
+          _builder.append("\t");
+          _builder.append("<script>");
+          _builder.newLine();
+          _builder.append("\t");
+          _builder.append("document.getElementById(\"");
+          Name _name_1 = input.getName();
+          _builder.append(_name_1, "\t");
+          _builder.append("\").setAttribute(\"autofocus\", \"autofocus\");");
+          _builder.newLineIfNotEmpty();
+          _builder.append("\t");
+          _builder.append("</script>");
+          _builder.newLine();
+        }
+      }
+      _xblockexpression = _builder;
+    }
+    return _xblockexpression;
   }
   
   public CharSequence startHTML() {
