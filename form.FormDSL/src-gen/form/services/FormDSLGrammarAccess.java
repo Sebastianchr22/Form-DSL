@@ -366,7 +366,7 @@ public class FormDSLGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final Action cGreaterThanAction_1_1 = (Action)cGroup_1.eContents().get(1);
 		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
 		private final Keyword cLessThanSignEqualsSignKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Action cLessThaninclusiveAction_2_1 = (Action)cGroup_2.eContents().get(1);
+		private final Action cLessThanInclusiveAction_2_1 = (Action)cGroup_2.eContents().get(1);
 		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
 		private final Keyword cGreaterThanSignEqualsSignKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
 		private final Action cGreaterThanInclusiveAction_3_1 = (Action)cGroup_3.eContents().get(1);
@@ -380,7 +380,7 @@ public class FormDSLGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//Comparison:
 		//    "<" {LessThan} |
 		//    ">" {GreaterThan} |
-		//    "<=" {LessThaninclusive} |
+		//    "<=" {LessThanInclusive} |
 		//    ">=" {GreaterThanInclusive} |
 		//    "==" {Exactly} |
 		//    "!=" {Not}
@@ -389,7 +389,7 @@ public class FormDSLGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		
 		//"<" {LessThan} |
 		//">" {GreaterThan} |
-		//"<=" {LessThaninclusive} |
+		//"<=" {LessThanInclusive} |
 		//">=" {GreaterThanInclusive} |
 		//"==" {Exactly} |
 		//"!=" {Not}
@@ -413,14 +413,14 @@ public class FormDSLGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//{GreaterThan}
 		public Action getGreaterThanAction_1_1() { return cGreaterThanAction_1_1; }
 		
-		//"<=" {LessThaninclusive}
+		//"<=" {LessThanInclusive}
 		public Group getGroup_2() { return cGroup_2; }
 		
 		//"<="
 		public Keyword getLessThanSignEqualsSignKeyword_2_0() { return cLessThanSignEqualsSignKeyword_2_0; }
 		
-		//{LessThaninclusive}
-		public Action getLessThaninclusiveAction_2_1() { return cLessThaninclusiveAction_2_1; }
+		//{LessThanInclusive}
+		public Action getLessThanInclusiveAction_2_1() { return cLessThanInclusiveAction_2_1; }
 		
 		//">=" {GreaterThanInclusive}
 		public Group getGroup_3() { return cGroup_3; }
@@ -581,7 +581,7 @@ public class FormDSLGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 	//Comparison:
 	//    "<" {LessThan} |
 	//    ">" {GreaterThan} |
-	//    "<=" {LessThaninclusive} |
+	//    "<=" {LessThanInclusive} |
 	//    ">=" {GreaterThanInclusive} |
 	//    "==" {Exactly} |
 	//    "!=" {Not}

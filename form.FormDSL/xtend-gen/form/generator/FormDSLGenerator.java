@@ -4,22 +4,29 @@
 package form.generator;
 
 import com.google.common.collect.Iterators;
+import form.formDSL.Comparison;
+import form.formDSL.Exactly;
 import form.formDSL.Expression;
 import form.formDSL.Focus;
 import form.formDSL.Form;
 import form.formDSL.Generic;
+import form.formDSL.GreaterThan;
 import form.formDSL.GreaterThanInclusive;
 import form.formDSL.Input;
 import form.formDSL.Is;
 import form.formDSL.Length;
+import form.formDSL.LessThan;
+import form.formDSL.LessThanInclusive;
 import form.formDSL.LongText;
 import form.formDSL.Money;
 import form.formDSL.Name;
+import form.formDSL.Not;
 import form.formDSL.Optional;
 import form.formDSL.ShortText;
 import form.formDSL.StringNumber;
 import form.formDSL.Type;
 import java.util.Arrays;
+import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -27,6 +34,7 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 
 /**
  * Generates code from your model files on save.
@@ -48,64 +56,14 @@ public class FormDSLGenerator extends AbstractGenerator {
   }
   
   protected CharSequence _compute(final Input input) {
-    CharSequence _xblockexpression = null;
-    {
-      this.hasFocus = false;
-      this.isRequired = true;
-      EList<Expression> _expression = input.getExpression();
-      for (final Expression exp : _expression) {
-        this.handleExp(exp);
-      }
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("<label class=\"form-label\">");
-      CharSequence _compute = this.compute(input.getName());
-      _builder.append(_compute);
-      _builder.append(":</label>");
-      _builder.newLineIfNotEmpty();
-      CharSequence _compute_1 = this.compute(input.getType(), input.getName());
-      _builder.append(_compute_1);
-      _builder.newLineIfNotEmpty();
-      _xblockexpression = _builder;
-    }
-    return _xblockexpression;
-  }
-  
-  protected void _handleExp(final Optional exp) {
-    this.isRequired = false;
-  }
-  
-  protected void _handleExp(final Focus exp) {
-    this.hasFocus = true;
-  }
-  
-  protected void _handleExp(final Is exp) {
-    System.out.println("Is ");
-    this.handleExp(exp.getComp());
-    System.out.println(exp.getValue());
-  }
-  
-  protected void _handleExp(final Length exp) {
-    System.out.println("Length ");
-  }
-  
-  protected void _handleExp(final GreaterThanInclusive exp) {
-    System.out.println(">= ");
-  }
-  
-  public CharSequence handleNonMathExp() {
     StringConcatenation _builder = new StringConcatenation();
-    {
-      if (this.isRequired) {
-        _builder.append(" required ");
-      }
-    }
-    _builder.append(" ");
+    _builder.append("<label class=\"form-label\">");
+    CharSequence _compute = this.compute(input.getName());
+    _builder.append(_compute);
+    _builder.append(":</label>");
     _builder.newLineIfNotEmpty();
-    {
-      if (this.hasFocus) {
-        _builder.append(" autofocus ");
-      }
-    }
+    CharSequence _compute_1 = this.compute(input.getType(), input.getName());
+    _builder.append(_compute_1);
     _builder.newLineIfNotEmpty();
     return _builder;
   }
@@ -122,10 +80,7 @@ public class FormDSLGenerator extends AbstractGenerator {
     _builder.append("\" placeholder=\"");
     String _text_1 = name.getText();
     _builder.append(_text_1);
-    _builder.append("\" ");
-    CharSequence _handleNonMathExp = this.handleNonMathExp();
-    _builder.append(_handleNonMathExp);
-    _builder.append(">");
+    _builder.append("\">");
     return _builder;
   }
   
@@ -138,10 +93,7 @@ public class FormDSLGenerator extends AbstractGenerator {
     _builder.append("\" rows=\"8\" cols=\"50\" placeholder=\"");
     String _text = name.getText();
     _builder.append(_text);
-    _builder.append("\" ");
-    CharSequence _handleNonMathExp = this.handleNonMathExp();
-    _builder.append(_handleNonMathExp);
-    _builder.append("></textarea>");
+    _builder.append("\"></textarea>");
     return _builder;
   }
   
@@ -151,10 +103,7 @@ public class FormDSLGenerator extends AbstractGenerator {
     _builder.append(this.formClass);
     _builder.append("\" type=\"number\" min=\"0.00\" max=\"10000.00\" step=\"0.01\" placeholder=\"0.00\" id=\"");
     _builder.append(name);
-    _builder.append("\" ");
-    CharSequence _handleNonMathExp = this.handleNonMathExp();
-    _builder.append(_handleNonMathExp);
-    _builder.append(">");
+    _builder.append("\">");
     return _builder;
   }
   
@@ -167,10 +116,7 @@ public class FormDSLGenerator extends AbstractGenerator {
     _builder.append("\" placeholder=\"");
     String _text = name.getText();
     _builder.append(_text);
-    _builder.append("\" ");
-    CharSequence _handleNonMathExp = this.handleNonMathExp();
-    _builder.append(_handleNonMathExp);
-    _builder.append(">");
+    _builder.append("\">");
     return _builder;
   }
   
@@ -193,7 +139,7 @@ public class FormDSLGenerator extends AbstractGenerator {
     _builder.append(_startHTML);
     _builder.newLineIfNotEmpty();
     _builder.newLine();
-    _builder.append("<form>");
+    _builder.append("<form onSubmit=\"submitHandler(event)\">");
     _builder.newLine();
     {
       EList<Input> _content = form.getContent();
@@ -208,7 +154,10 @@ public class FormDSLGenerator extends AbstractGenerator {
     _builder.append("<br>");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("<input type=\"submit\" class=\"btn btn-primary\" value=\"Submit\" onClick=\"submitHandler()\">");
+    _builder.append("<input type=\"submit\" class=\"btn btn-primary\" value=\"Submit\" onclick=\"submitHandler(event)\">");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<p style=\"color:red\" id=\"error_output\"></p>");
     _builder.newLine();
     _builder.append("</form>");
     _builder.newLine();
@@ -222,11 +171,169 @@ public class FormDSLGenerator extends AbstractGenerator {
     return _builder;
   }
   
+  protected CharSequence _handleExp(final Optional exp, final Name name) {
+    CharSequence _xblockexpression = null;
+    {
+      this.isRequired = false;
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("\t\t");
+      _builder.newLine();
+      _xblockexpression = _builder;
+    }
+    return _xblockexpression;
+  }
+  
+  protected CharSequence _handleExp(final Focus exp, final Name name) {
+    CharSequence _xblockexpression = null;
+    {
+      this.hasFocus = true;
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("\t\t");
+      _builder.newLine();
+      _xblockexpression = _builder;
+    }
+    return _xblockexpression;
+  }
+  
+  protected CharSequence _handleExp(final Is exp, final Name name) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("if(!(document.getElementById(\"");
+    _builder.append(name);
+    _builder.append("\").value ");
+    CharSequence _compText = this.getCompText(exp.getComp());
+    _builder.append(_compText);
+    _builder.append(" ");
+    int _value = exp.getValue();
+    _builder.append(_value);
+    _builder.append(")){");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("console.log(\"");
+    String _text = name.getText();
+    _builder.append(_text, "\t");
+    _builder.append(" property failed: \" + document.getElementById(\"");
+    _builder.append(name, "\t");
+    _builder.append("\").value);");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("document.getElementById(\"error_output\").innerHTML = \"\'");
+    String _text_1 = name.getText();
+    _builder.append(_text_1, "\t");
+    _builder.append("\' field was incorrent, \'");
+    String _text_2 = name.getText();
+    _builder.append(_text_2, "\t");
+    _builder.append("\' must be ");
+    CharSequence _compText_1 = this.getCompText(exp.getComp());
+    _builder.append(_compText_1, "\t");
+    _builder.append(" ");
+    int _value_1 = exp.getValue();
+    _builder.append(_value_1, "\t");
+    _builder.append("\";");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("failedProperty = true;");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  protected CharSequence _handleExp(final Length exp, final Name name) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("size");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  protected CharSequence _getCompText(final GreaterThan comp) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append(">");
+    return _builder;
+  }
+  
+  protected CharSequence _getCompText(final GreaterThanInclusive comp) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append(">=");
+    return _builder;
+  }
+  
+  protected CharSequence _getCompText(final LessThan comp) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<");
+    return _builder;
+  }
+  
+  protected CharSequence _getCompText(final LessThanInclusive comp) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<=");
+    return _builder;
+  }
+  
+  protected CharSequence _getCompText(final Exactly comp) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("==");
+    return _builder;
+  }
+  
+  protected CharSequence _getCompText(final Not comp) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("!=");
+    return _builder;
+  }
+  
+  private List<String> validators = CollectionLiterals.<String>newArrayList();
+  
   public CharSequence compilejs(final Form form) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<script>");
     _builder.newLine();
-    _builder.append("function submitHandler(){");
+    _builder.append("//Set focus and required attributes to inputs");
+    _builder.newLine();
+    {
+      EList<Input> _content = form.getContent();
+      for(final Input input : _content) {
+        {
+          EList<Expression> _expression = input.getExpression();
+          for(final Expression exp : _expression) {
+            _builder.append(this.isRequired = true);
+            _builder.newLineIfNotEmpty();
+            _builder.append(this.hasFocus = false);
+            _builder.newLineIfNotEmpty();
+            _builder.append("//");
+            boolean _add = this.validators.add(this.handleExp(exp, input.getName()).toString());
+            _builder.append(_add);
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        _builder.newLine();
+        {
+          if (this.isRequired) {
+            _builder.append("document.getElementById(\"");
+            Name _name = input.getName();
+            _builder.append(_name);
+            _builder.append("\").required = true;");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        {
+          if (this.hasFocus) {
+            _builder.append("document.getElementById(\"");
+            Name _name_1 = input.getName();
+            _builder.append(_name_1);
+            _builder.append("\").focus();");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+      }
+    }
+    _builder.newLine();
+    _builder.append("function submitHandler(e){");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("console.log(\"Called submit!\");");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("var failedProperty = false;");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("//When submit");
@@ -234,23 +341,44 @@ public class FormDSLGenerator extends AbstractGenerator {
     _builder.append("\t\t");
     _builder.append("//foreach expression");
     _builder.newLine();
+    {
+      for(final String validation : this.validators) {
+        _builder.append("\t\t");
+        _builder.append(validation, "\t\t");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("\t\t");
+    _builder.append("if (failedProperty){");
+    _builder.newLine();
     _builder.append("\t\t\t");
-    _builder.append("//Is hold?");
+    _builder.append("console.log(\"Form has failed properties...\");");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("e.preventDefault();");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("return false;");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("//If all is hold");
+    _builder.append("}else{");
     _builder.newLine();
     _builder.append("\t\t\t");
     _builder.append("//Submit");
     _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("//Else");
+    _builder.append("\t\t\t");
+    _builder.append("document.getElementById(\"error_output\").innerHTML = \"\"");
     _builder.newLine();
     _builder.append("\t\t\t");
-    _builder.append("//(Give error)?");
+    _builder.append("console.log(\"Submit!\");");
     _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("return true;");
+    _builder.newLine();
+    _builder.append("\t\t");
     _builder.append("}");
     _builder.newLine();
+    _builder.append("}");
     _builder.newLine();
     _builder.append("</script>");
     _builder.newLine();
@@ -336,28 +464,6 @@ public class FormDSLGenerator extends AbstractGenerator {
     }
   }
   
-  public void handleExp(final EObject exp) {
-    if (exp instanceof Is) {
-      _handleExp((Is)exp);
-      return;
-    } else if (exp instanceof Length) {
-      _handleExp((Length)exp);
-      return;
-    } else if (exp instanceof Focus) {
-      _handleExp((Focus)exp);
-      return;
-    } else if (exp instanceof GreaterThanInclusive) {
-      _handleExp((GreaterThanInclusive)exp);
-      return;
-    } else if (exp instanceof Optional) {
-      _handleExp((Optional)exp);
-      return;
-    } else {
-      throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(exp).toString());
-    }
-  }
-  
   public CharSequence compute(final Type type, final Name name) {
     if (type instanceof Generic) {
       return _compute((Generic)type, name);
@@ -372,6 +478,40 @@ public class FormDSLGenerator extends AbstractGenerator {
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(type, name).toString());
+    }
+  }
+  
+  public CharSequence handleExp(final Expression exp, final Name name) {
+    if (exp instanceof Is) {
+      return _handleExp((Is)exp, name);
+    } else if (exp instanceof Length) {
+      return _handleExp((Length)exp, name);
+    } else if (exp instanceof Focus) {
+      return _handleExp((Focus)exp, name);
+    } else if (exp instanceof Optional) {
+      return _handleExp((Optional)exp, name);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(exp, name).toString());
+    }
+  }
+  
+  public CharSequence getCompText(final Comparison comp) {
+    if (comp instanceof Exactly) {
+      return _getCompText((Exactly)comp);
+    } else if (comp instanceof GreaterThan) {
+      return _getCompText((GreaterThan)comp);
+    } else if (comp instanceof GreaterThanInclusive) {
+      return _getCompText((GreaterThanInclusive)comp);
+    } else if (comp instanceof LessThan) {
+      return _getCompText((LessThan)comp);
+    } else if (comp instanceof LessThanInclusive) {
+      return _getCompText((LessThanInclusive)comp);
+    } else if (comp instanceof Not) {
+      return _getCompText((Not)comp);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(comp).toString());
     }
   }
 }

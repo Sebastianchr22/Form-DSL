@@ -166,9 +166,9 @@ public class FormDSLAdapterFactory extends AdapterFactoryImpl
         return createGreaterThanAdapter();
       }
       @Override
-      public Adapter caseLessThaninclusive(LessThaninclusive object)
+      public Adapter caseLessThanInclusive(LessThanInclusive object)
       {
-        return createLessThaninclusiveAdapter();
+        return createLessThanInclusiveAdapter();
       }
       @Override
       public Adapter caseGreaterThanInclusive(GreaterThanInclusive object)
@@ -478,16 +478,16 @@ public class FormDSLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link form.formDSL.LessThaninclusive <em>Less Thaninclusive</em>}'.
+   * Creates a new adapter for an object of class '{@link form.formDSL.LessThanInclusive <em>Less Than Inclusive</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see form.formDSL.LessThaninclusive
+   * @see form.formDSL.LessThanInclusive
    * @generated
    */
-  public Adapter createLessThaninclusiveAdapter()
+  public Adapter createLessThanInclusiveAdapter()
   {
     return null;
   }

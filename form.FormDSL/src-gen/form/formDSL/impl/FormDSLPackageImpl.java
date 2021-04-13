@@ -18,7 +18,7 @@ import form.formDSL.Input;
 import form.formDSL.Is;
 import form.formDSL.Length;
 import form.formDSL.LessThan;
-import form.formDSL.LessThaninclusive;
+import form.formDSL.LessThanInclusive;
 import form.formDSL.LongText;
 import form.formDSL.Money;
 import form.formDSL.Name;
@@ -174,7 +174,7 @@ public class FormDSLPackageImpl extends EPackageImpl implements FormDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass lessThaninclusiveEClass = null;
+  private EClass lessThanInclusiveEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -563,9 +563,9 @@ public class FormDSLPackageImpl extends EPackageImpl implements FormDSLPackage
    * @generated
    */
   @Override
-  public EClass getLessThaninclusive()
+  public EClass getLessThanInclusive()
   {
-    return lessThaninclusiveEClass;
+    return lessThanInclusiveEClass;
   }
 
   /**
@@ -677,7 +677,7 @@ public class FormDSLPackageImpl extends EPackageImpl implements FormDSLPackage
 
     greaterThanEClass = createEClass(GREATER_THAN);
 
-    lessThaninclusiveEClass = createEClass(LESS_THANINCLUSIVE);
+    lessThanInclusiveEClass = createEClass(LESS_THAN_INCLUSIVE);
 
     greaterThanInclusiveEClass = createEClass(GREATER_THAN_INCLUSIVE);
 
@@ -727,7 +727,7 @@ public class FormDSLPackageImpl extends EPackageImpl implements FormDSLPackage
     lengthEClass.getESuperTypes().add(this.getExp());
     lessThanEClass.getESuperTypes().add(this.getComparison());
     greaterThanEClass.getESuperTypes().add(this.getComparison());
-    lessThaninclusiveEClass.getESuperTypes().add(this.getComparison());
+    lessThanInclusiveEClass.getESuperTypes().add(this.getComparison());
     greaterThanInclusiveEClass.getESuperTypes().add(this.getComparison());
     exactlyEClass.getESuperTypes().add(this.getComparison());
     notEClass.getESuperTypes().add(this.getComparison());
@@ -778,7 +778,7 @@ public class FormDSLPackageImpl extends EPackageImpl implements FormDSLPackage
 
     initEClass(greaterThanEClass, GreaterThan.class, "GreaterThan", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(lessThaninclusiveEClass, LessThaninclusive.class, "LessThaninclusive", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(lessThanInclusiveEClass, LessThanInclusive.class, "LessThanInclusive", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(greaterThanInclusiveEClass, GreaterThanInclusive.class, "GreaterThanInclusive", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

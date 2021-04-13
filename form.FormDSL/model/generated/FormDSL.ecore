@@ -37,7 +37,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Length" eSuperTypes="#//Exp"/>
   <eClassifiers xsi:type="ecore:EClass" name="LessThan" eSuperTypes="#//Comparison"/>
   <eClassifiers xsi:type="ecore:EClass" name="GreaterThan" eSuperTypes="#//Comparison"/>
-  <eClassifiers xsi:type="ecore:EClass" name="LessThaninclusive" eSuperTypes="#//Comparison"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LessThanInclusive" eSuperTypes="#//Comparison"/>
   <eClassifiers xsi:type="ecore:EClass" name="GreaterThanInclusive" eSuperTypes="#//Comparison"/>
   <eClassifiers xsi:type="ecore:EClass" name="Exactly" eSuperTypes="#//Comparison"/>
   <eClassifiers xsi:type="ecore:EClass" name="Not" eSuperTypes="#//Comparison"/>

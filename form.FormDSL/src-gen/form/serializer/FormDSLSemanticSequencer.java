@@ -15,7 +15,7 @@ import form.formDSL.Input;
 import form.formDSL.Is;
 import form.formDSL.Length;
 import form.formDSL.LessThan;
-import form.formDSL.LessThaninclusive;
+import form.formDSL.LessThanInclusive;
 import form.formDSL.LongText;
 import form.formDSL.Money;
 import form.formDSL.Name;
@@ -79,8 +79,8 @@ public class FormDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 			case FormDSLPackage.LESS_THAN:
 				sequence_Comparison(context, (LessThan) semanticObject); 
 				return; 
-			case FormDSLPackage.LESS_THANINCLUSIVE:
-				sequence_Comparison(context, (LessThaninclusive) semanticObject); 
+			case FormDSLPackage.LESS_THAN_INCLUSIVE:
+				sequence_Comparison(context, (LessThanInclusive) semanticObject); 
 				return; 
 			case FormDSLPackage.LONG_TEXT:
 				sequence_Type(context, (LongText) semanticObject); 
@@ -158,12 +158,12 @@ public class FormDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Contexts:
-	 *     Comparison returns LessThaninclusive
+	 *     Comparison returns LessThanInclusive
 	 *
 	 * Constraint:
-	 *     {LessThaninclusive}
+	 *     {LessThanInclusive}
 	 */
-	protected void sequence_Comparison(ISerializationContext context, LessThaninclusive semanticObject) {
+	protected void sequence_Comparison(ISerializationContext context, LessThanInclusive semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

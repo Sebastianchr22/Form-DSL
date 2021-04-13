@@ -4,25 +4,25 @@
 package form.formDSL.impl;
 
 import form.formDSL.FormDSLPackage;
-import form.formDSL.LessThaninclusive;
+import form.formDSL.LessThanInclusive;
 
 import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Less Thaninclusive</b></em>'.
+ * An implementation of the model object '<em><b>Less Than Inclusive</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public class LessThaninclusiveImpl extends ComparisonImpl implements LessThaninclusive
+public class LessThanInclusiveImpl extends ComparisonImpl implements LessThanInclusive
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected LessThaninclusiveImpl()
+  protected LessThanInclusiveImpl()
   {
     super();
   }
@@ -35,7 +35,7 @@ public class LessThaninclusiveImpl extends ComparisonImpl implements LessThaninc
   @Override
   protected EClass eStaticClass()
   {
-    return FormDSLPackage.Literals.LESS_THANINCLUSIVE;
+    return FormDSLPackage.Literals.LESS_THAN_INCLUSIVE;
   }
 
-} //LessThaninclusiveImpl
+} //LessThanInclusiveImpl

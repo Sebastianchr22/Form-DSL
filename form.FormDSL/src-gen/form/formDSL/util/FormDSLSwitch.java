@@ -213,11 +213,11 @@ public class FormDSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case FormDSLPackage.LESS_THANINCLUSIVE:
+      case FormDSLPackage.LESS_THAN_INCLUSIVE:
       {
-        LessThaninclusive lessThaninclusive = (LessThaninclusive)theEObject;
-        T result = caseLessThaninclusive(lessThaninclusive);
-        if (result == null) result = caseComparison(lessThaninclusive);
+        LessThanInclusive lessThanInclusive = (LessThanInclusive)theEObject;
+        T result = caseLessThanInclusive(lessThanInclusive);
+        if (result == null) result = caseComparison(lessThanInclusive);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -538,17 +538,17 @@ public class FormDSLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Less Thaninclusive</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Less Than Inclusive</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Less Thaninclusive</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Less Than Inclusive</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseLessThaninclusive(LessThaninclusive object)
+  public T caseLessThanInclusive(LessThanInclusive object)
   {
     return null;
   }

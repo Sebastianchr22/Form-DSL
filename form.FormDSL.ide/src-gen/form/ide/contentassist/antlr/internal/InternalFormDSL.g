@@ -1357,9 +1357,9 @@ rule__Comparison__Group_2__1__Impl
 	}
 :
 (
-	{ before(grammarAccess.getComparisonAccess().getLessThaninclusiveAction_2_1()); }
+	{ before(grammarAccess.getComparisonAccess().getLessThanInclusiveAction_2_1()); }
 	()
-	{ after(grammarAccess.getComparisonAccess().getLessThaninclusiveAction_2_1()); }
+	{ after(grammarAccess.getComparisonAccess().getLessThanInclusiveAction_2_1()); }
 )
 ;
 finally {

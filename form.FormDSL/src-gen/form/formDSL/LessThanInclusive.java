@@ -6,14 +6,14 @@ package form.formDSL;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Less Thaninclusive</b></em>'.
+ * A representation of the model object '<em><b>Less Than Inclusive</b></em>'.
  * <!-- end-user-doc -->
  *
  *
- * @see form.formDSL.FormDSLPackage#getLessThaninclusive()
+ * @see form.formDSL.FormDSLPackage#getLessThanInclusive()
  * @model
  * @generated
  */
-public interface LessThaninclusive extends Comparison
+public interface LessThanInclusive extends Comparison
 {
-} // LessThaninclusive
+} // LessThanInclusive

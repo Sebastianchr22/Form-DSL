@@ -83,7 +83,7 @@ public class FormDSLFactoryImpl extends EFactoryImpl implements FormDSLFactory
       case FormDSLPackage.LENGTH: return createLength();
       case FormDSLPackage.LESS_THAN: return createLessThan();
       case FormDSLPackage.GREATER_THAN: return createGreaterThan();
-      case FormDSLPackage.LESS_THANINCLUSIVE: return createLessThaninclusive();
+      case FormDSLPackage.LESS_THAN_INCLUSIVE: return createLessThanInclusive();
       case FormDSLPackage.GREATER_THAN_INCLUSIVE: return createGreaterThanInclusive();
       case FormDSLPackage.EXACTLY: return createExactly();
       case FormDSLPackage.NOT: return createNot();
@@ -314,10 +314,10 @@ public class FormDSLFactoryImpl extends EFactoryImpl implements FormDSLFactory
    * @generated
    */
   @Override
-  public LessThaninclusive createLessThaninclusive()
+  public LessThanInclusive createLessThanInclusive()
   {
-    LessThaninclusiveImpl lessThaninclusive = new LessThaninclusiveImpl();
-    return lessThaninclusive;
+    LessThanInclusiveImpl lessThanInclusive = new LessThanInclusiveImpl();
+    return lessThanInclusive;
   }
 
   /**

@@ -39,7 +39,7 @@
     <genClasses ecoreClass="FormDSL.ecore#//Length"/>
     <genClasses ecoreClass="FormDSL.ecore#//LessThan"/>
     <genClasses ecoreClass="FormDSL.ecore#//GreaterThan"/>
-    <genClasses ecoreClass="FormDSL.ecore#//LessThaninclusive"/>
+    <genClasses ecoreClass="FormDSL.ecore#//LessThanInclusive"/>
     <genClasses ecoreClass="FormDSL.ecore#//GreaterThanInclusive"/>
     <genClasses ecoreClass="FormDSL.ecore#//Exactly"/>
     <genClasses ecoreClass="FormDSL.ecore#//Not"/>

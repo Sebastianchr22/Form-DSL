@@ -607,23 +607,23 @@ public interface FormDSLPackage extends EPackage
   int GREATER_THAN_FEATURE_COUNT = COMPARISON_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link form.formDSL.impl.LessThaninclusiveImpl <em>Less Thaninclusive</em>}' class.
+   * The meta object id for the '{@link form.formDSL.impl.LessThanInclusiveImpl <em>Less Than Inclusive</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see form.formDSL.impl.LessThaninclusiveImpl
-   * @see form.formDSL.impl.FormDSLPackageImpl#getLessThaninclusive()
+   * @see form.formDSL.impl.LessThanInclusiveImpl
+   * @see form.formDSL.impl.FormDSLPackageImpl#getLessThanInclusive()
    * @generated
    */
-  int LESS_THANINCLUSIVE = 18;
+  int LESS_THAN_INCLUSIVE = 18;
 
   /**
-   * The number of structural features of the '<em>Less Thaninclusive</em>' class.
+   * The number of structural features of the '<em>Less Than Inclusive</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LESS_THANINCLUSIVE_FEATURE_COUNT = COMPARISON_FEATURE_COUNT + 0;
+  int LESS_THAN_INCLUSIVE_FEATURE_COUNT = COMPARISON_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link form.formDSL.impl.GreaterThanInclusiveImpl <em>Greater Than Inclusive</em>}' class.
@@ -963,14 +963,14 @@ public interface FormDSLPackage extends EPackage
   EClass getGreaterThan();
 
   /**
-   * Returns the meta object for class '{@link form.formDSL.LessThaninclusive <em>Less Thaninclusive</em>}'.
+   * Returns the meta object for class '{@link form.formDSL.LessThanInclusive <em>Less Than Inclusive</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Less Thaninclusive</em>'.
-   * @see form.formDSL.LessThaninclusive
+   * @return the meta object for class '<em>Less Than Inclusive</em>'.
+   * @see form.formDSL.LessThanInclusive
    * @generated
    */
-  EClass getLessThaninclusive();
+  EClass getLessThanInclusive();
 
   /**
    * Returns the meta object for class '{@link form.formDSL.GreaterThanInclusive <em>Greater Than Inclusive</em>}'.
@@ -1278,14 +1278,14 @@ public interface FormDSLPackage extends EPackage
     EClass GREATER_THAN = eINSTANCE.getGreaterThan();
 
     /**
-     * The meta object literal for the '{@link form.formDSL.impl.LessThaninclusiveImpl <em>Less Thaninclusive</em>}' class.
+     * The meta object literal for the '{@link form.formDSL.impl.LessThanInclusiveImpl <em>Less Than Inclusive</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see form.formDSL.impl.LessThaninclusiveImpl
-     * @see form.formDSL.impl.FormDSLPackageImpl#getLessThaninclusive()
+     * @see form.formDSL.impl.LessThanInclusiveImpl
+     * @see form.formDSL.impl.FormDSLPackageImpl#getLessThanInclusive()
      * @generated
      */
-    EClass LESS_THANINCLUSIVE = eINSTANCE.getLessThaninclusive();
+    EClass LESS_THAN_INCLUSIVE = eINSTANCE.getLessThanInclusive();
 
     /**
      * The meta object literal for the '{@link form.formDSL.impl.GreaterThanInclusiveImpl <em>Greater Than Inclusive</em>}' class.

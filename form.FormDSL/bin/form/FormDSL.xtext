@@ -37,7 +37,7 @@ Exp:
 Comparison:
 	"<" {LessThan} | 
 	">" {GreaterThan} | 
-	"<=" {LessThaninclusive} | 
+	"<=" {LessThanInclusive} | 
 	">=" {GreaterThanInclusive} | 
 	"==" {Exactly} | 
 	"!=" {Not}

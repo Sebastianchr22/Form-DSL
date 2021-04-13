@@ -186,13 +186,13 @@ public interface FormDSLFactory extends EFactory
   GreaterThan createGreaterThan();
 
   /**
-   * Returns a new object of class '<em>Less Thaninclusive</em>'.
+   * Returns a new object of class '<em>Less Than Inclusive</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Less Thaninclusive</em>'.
+   * @return a new object of class '<em>Less Than Inclusive</em>'.
    * @generated
    */
-  LessThaninclusive createLessThaninclusive();
+  LessThanInclusive createLessThanInclusive();
 
   /**
    * Returns a new object of class '<em>Greater Than Inclusive</em>'.

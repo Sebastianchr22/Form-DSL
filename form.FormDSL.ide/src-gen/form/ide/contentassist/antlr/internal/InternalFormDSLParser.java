@@ -4178,13 +4178,13 @@ public class InternalFormDSLParser extends AbstractInternalContentAssistParser {
             // InternalFormDSL.g:1359:1: ( () )
             // InternalFormDSL.g:1360:2: ()
             {
-             before(grammarAccess.getComparisonAccess().getLessThaninclusiveAction_2_1()); 
+             before(grammarAccess.getComparisonAccess().getLessThanInclusiveAction_2_1()); 
             // InternalFormDSL.g:1361:2: ()
             // InternalFormDSL.g:1361:3: 
             {
             }
 
-             after(grammarAccess.getComparisonAccess().getLessThaninclusiveAction_2_1()); 
+             after(grammarAccess.getComparisonAccess().getLessThanInclusiveAction_2_1()); 
 
             }
 

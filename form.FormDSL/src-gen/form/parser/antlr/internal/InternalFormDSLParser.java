@@ -1576,7 +1576,7 @@ public class InternalFormDSLParser extends AbstractInternalAntlrParser {
                     {
 
                     					current = forceCreateModelElement(
-                    						grammarAccess.getComparisonAccess().getLessThaninclusiveAction_2_1(),
+                    						grammarAccess.getComparisonAccess().getLessThanInclusiveAction_2_1(),
                     						current);
                     				
 
