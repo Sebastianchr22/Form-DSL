@@ -277,21 +277,21 @@ ruleType returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getTypeAccess().getMoneyAction_3_0(),
+						grammarAccess.getTypeAccess().getGenericAction_3_0(),
 						$current);
 				}
 			)
 			(
 				(
-					lv_text_7_0='money'
+					lv_text_7_0='email'
 					{
-						newLeafNode(lv_text_7_0, grammarAccess.getTypeAccess().getTextMoneyKeyword_3_1_0());
+						newLeafNode(lv_text_7_0, grammarAccess.getTypeAccess().getTextEmailKeyword_3_1_0());
 					}
 					{
 						if ($current==null) {
 							$current = createModelElement(grammarAccess.getTypeRule());
 						}
-						setWithLastConsumed($current, "text", lv_text_7_0, "money");
+						setWithLastConsumed($current, "text", lv_text_7_0, "email");
 					}
 				)
 			)
@@ -301,69 +301,21 @@ ruleType returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getTypeAccess().getGenericAction_4_0(),
+						grammarAccess.getTypeAccess().getLongTextAction_4_0(),
 						$current);
 				}
 			)
 			(
 				(
-					lv_text_9_0='email'
+					lv_text_9_0='longText'
 					{
-						newLeafNode(lv_text_9_0, grammarAccess.getTypeAccess().getTextEmailKeyword_4_1_0());
+						newLeafNode(lv_text_9_0, grammarAccess.getTypeAccess().getTextLongTextKeyword_4_1_0());
 					}
 					{
 						if ($current==null) {
 							$current = createModelElement(grammarAccess.getTypeRule());
 						}
-						setWithLastConsumed($current, "text", lv_text_9_0, "email");
-					}
-				)
-			)
-		)
-		    |
-		(
-			(
-				{
-					$current = forceCreateModelElement(
-						grammarAccess.getTypeAccess().getLongTextAction_5_0(),
-						$current);
-				}
-			)
-			(
-				(
-					lv_text_11_0='longText'
-					{
-						newLeafNode(lv_text_11_0, grammarAccess.getTypeAccess().getTextLongTextKeyword_5_1_0());
-					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getTypeRule());
-						}
-						setWithLastConsumed($current, "text", lv_text_11_0, "longText");
-					}
-				)
-			)
-		)
-		    |
-		(
-			(
-				{
-					$current = forceCreateModelElement(
-						grammarAccess.getTypeAccess().getStringNumberAction_6_0(),
-						$current);
-				}
-			)
-			(
-				(
-					lv_text_13_0='stringNumber'
-					{
-						newLeafNode(lv_text_13_0, grammarAccess.getTypeAccess().getTextStringNumberKeyword_6_1_0());
-					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getTypeRule());
-						}
-						setWithLastConsumed($current, "text", lv_text_13_0, "stringNumber");
+						setWithLastConsumed($current, "text", lv_text_9_0, "longText");
 					}
 				)
 			)

@@ -139,27 +139,11 @@ public class FormDSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case FormDSLPackage.MONEY:
-      {
-        Money money = (Money)theEObject;
-        T result = caseMoney(money);
-        if (result == null) result = caseType(money);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case FormDSLPackage.LONG_TEXT:
       {
         LongText longText = (LongText)theEObject;
         T result = caseLongText(longText);
         if (result == null) result = caseType(longText);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case FormDSLPackage.STRING_NUMBER:
-      {
-        StringNumber stringNumber = (StringNumber)theEObject;
-        T result = caseStringNumber(stringNumber);
-        if (result == null) result = caseType(stringNumber);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -394,22 +378,6 @@ public class FormDSLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Money</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Money</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseMoney(Money object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Long Text</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -421,22 +389,6 @@ public class FormDSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseLongText(LongText object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>String Number</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>String Number</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseStringNumber(StringNumber object)
   {
     return null;
   }

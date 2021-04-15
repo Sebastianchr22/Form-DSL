@@ -337,34 +337,6 @@ public interface FormDSLPackage extends EPackage
   int GENERIC_FEATURE_COUNT = TYPE_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link form.formDSL.impl.MoneyImpl <em>Money</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see form.formDSL.impl.MoneyImpl
-   * @see form.formDSL.impl.FormDSLPackageImpl#getMoney()
-   * @generated
-   */
-  int MONEY = 9;
-
-  /**
-   * The feature id for the '<em><b>Text</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MONEY__TEXT = TYPE__TEXT;
-
-  /**
-   * The number of structural features of the '<em>Money</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MONEY_FEATURE_COUNT = TYPE_FEATURE_COUNT + 0;
-
-  /**
    * The meta object id for the '{@link form.formDSL.impl.LongTextImpl <em>Long Text</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -372,7 +344,7 @@ public interface FormDSLPackage extends EPackage
    * @see form.formDSL.impl.FormDSLPackageImpl#getLongText()
    * @generated
    */
-  int LONG_TEXT = 10;
+  int LONG_TEXT = 9;
 
   /**
    * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -393,34 +365,6 @@ public interface FormDSLPackage extends EPackage
   int LONG_TEXT_FEATURE_COUNT = TYPE_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link form.formDSL.impl.StringNumberImpl <em>String Number</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see form.formDSL.impl.StringNumberImpl
-   * @see form.formDSL.impl.FormDSLPackageImpl#getStringNumber()
-   * @generated
-   */
-  int STRING_NUMBER = 11;
-
-  /**
-   * The feature id for the '<em><b>Text</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_NUMBER__TEXT = TYPE__TEXT;
-
-  /**
-   * The number of structural features of the '<em>String Number</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_NUMBER_FEATURE_COUNT = TYPE_FEATURE_COUNT + 0;
-
-  /**
    * The meta object id for the '{@link form.formDSL.impl.OptionalImpl <em>Optional</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -428,7 +372,7 @@ public interface FormDSLPackage extends EPackage
    * @see form.formDSL.impl.FormDSLPackageImpl#getOptional()
    * @generated
    */
-  int OPTIONAL = 12;
+  int OPTIONAL = 10;
 
   /**
    * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -456,7 +400,7 @@ public interface FormDSLPackage extends EPackage
    * @see form.formDSL.impl.FormDSLPackageImpl#getFocus()
    * @generated
    */
-  int FOCUS = 13;
+  int FOCUS = 11;
 
   /**
    * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -484,7 +428,7 @@ public interface FormDSLPackage extends EPackage
    * @see form.formDSL.impl.FormDSLPackageImpl#getIs()
    * @generated
    */
-  int IS = 14;
+  int IS = 12;
 
   /**
    * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -530,7 +474,7 @@ public interface FormDSLPackage extends EPackage
    * @see form.formDSL.impl.FormDSLPackageImpl#getLength()
    * @generated
    */
-  int LENGTH = 15;
+  int LENGTH = 13;
 
   /**
    * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -576,7 +520,7 @@ public interface FormDSLPackage extends EPackage
    * @see form.formDSL.impl.FormDSLPackageImpl#getLessThan()
    * @generated
    */
-  int LESS_THAN = 16;
+  int LESS_THAN = 14;
 
   /**
    * The number of structural features of the '<em>Less Than</em>' class.
@@ -595,7 +539,7 @@ public interface FormDSLPackage extends EPackage
    * @see form.formDSL.impl.FormDSLPackageImpl#getGreaterThan()
    * @generated
    */
-  int GREATER_THAN = 17;
+  int GREATER_THAN = 15;
 
   /**
    * The number of structural features of the '<em>Greater Than</em>' class.
@@ -614,7 +558,7 @@ public interface FormDSLPackage extends EPackage
    * @see form.formDSL.impl.FormDSLPackageImpl#getLessThanInclusive()
    * @generated
    */
-  int LESS_THAN_INCLUSIVE = 18;
+  int LESS_THAN_INCLUSIVE = 16;
 
   /**
    * The number of structural features of the '<em>Less Than Inclusive</em>' class.
@@ -633,7 +577,7 @@ public interface FormDSLPackage extends EPackage
    * @see form.formDSL.impl.FormDSLPackageImpl#getGreaterThanInclusive()
    * @generated
    */
-  int GREATER_THAN_INCLUSIVE = 19;
+  int GREATER_THAN_INCLUSIVE = 17;
 
   /**
    * The number of structural features of the '<em>Greater Than Inclusive</em>' class.
@@ -652,7 +596,7 @@ public interface FormDSLPackage extends EPackage
    * @see form.formDSL.impl.FormDSLPackageImpl#getExactly()
    * @generated
    */
-  int EXACTLY = 20;
+  int EXACTLY = 18;
 
   /**
    * The number of structural features of the '<em>Exactly</em>' class.
@@ -671,7 +615,7 @@ public interface FormDSLPackage extends EPackage
    * @see form.formDSL.impl.FormDSLPackageImpl#getNot()
    * @generated
    */
-  int NOT = 21;
+  int NOT = 19;
 
   /**
    * The number of structural features of the '<em>Not</em>' class.
@@ -873,16 +817,6 @@ public interface FormDSLPackage extends EPackage
   EClass getGeneric();
 
   /**
-   * Returns the meta object for class '{@link form.formDSL.Money <em>Money</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Money</em>'.
-   * @see form.formDSL.Money
-   * @generated
-   */
-  EClass getMoney();
-
-  /**
    * Returns the meta object for class '{@link form.formDSL.LongText <em>Long Text</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -891,16 +825,6 @@ public interface FormDSLPackage extends EPackage
    * @generated
    */
   EClass getLongText();
-
-  /**
-   * Returns the meta object for class '{@link form.formDSL.StringNumber <em>String Number</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>String Number</em>'.
-   * @see form.formDSL.StringNumber
-   * @generated
-   */
-  EClass getStringNumber();
 
   /**
    * Returns the meta object for class '{@link form.formDSL.Optional <em>Optional</em>}'.
@@ -1188,16 +1112,6 @@ public interface FormDSLPackage extends EPackage
     EClass GENERIC = eINSTANCE.getGeneric();
 
     /**
-     * The meta object literal for the '{@link form.formDSL.impl.MoneyImpl <em>Money</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see form.formDSL.impl.MoneyImpl
-     * @see form.formDSL.impl.FormDSLPackageImpl#getMoney()
-     * @generated
-     */
-    EClass MONEY = eINSTANCE.getMoney();
-
-    /**
      * The meta object literal for the '{@link form.formDSL.impl.LongTextImpl <em>Long Text</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1206,16 +1120,6 @@ public interface FormDSLPackage extends EPackage
      * @generated
      */
     EClass LONG_TEXT = eINSTANCE.getLongText();
-
-    /**
-     * The meta object literal for the '{@link form.formDSL.impl.StringNumberImpl <em>String Number</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see form.formDSL.impl.StringNumberImpl
-     * @see form.formDSL.impl.FormDSLPackageImpl#getStringNumber()
-     * @generated
-     */
-    EClass STRING_NUMBER = eINSTANCE.getStringNumber();
 
     /**
      * The meta object literal for the '{@link form.formDSL.impl.OptionalImpl <em>Optional</em>}' class.

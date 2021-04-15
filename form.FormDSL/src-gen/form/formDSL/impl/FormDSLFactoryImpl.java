@@ -74,9 +74,7 @@ public class FormDSLFactoryImpl extends EFactoryImpl implements FormDSLFactory
       case FormDSLPackage.COMPARISON: return createComparison();
       case FormDSLPackage.SHORT_TEXT: return createShortText();
       case FormDSLPackage.GENERIC: return createGeneric();
-      case FormDSLPackage.MONEY: return createMoney();
       case FormDSLPackage.LONG_TEXT: return createLongText();
-      case FormDSLPackage.STRING_NUMBER: return createStringNumber();
       case FormDSLPackage.OPTIONAL: return createOptional();
       case FormDSLPackage.FOCUS: return createFocus();
       case FormDSLPackage.IS: return createIs();
@@ -206,34 +204,10 @@ public class FormDSLFactoryImpl extends EFactoryImpl implements FormDSLFactory
    * @generated
    */
   @Override
-  public Money createMoney()
-  {
-    MoneyImpl money = new MoneyImpl();
-    return money;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public LongText createLongText()
   {
     LongTextImpl longText = new LongTextImpl();
     return longText;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public StringNumber createStringNumber()
-  {
-    StringNumberImpl stringNumber = new StringNumberImpl();
-    return stringNumber;
   }
 
   /**

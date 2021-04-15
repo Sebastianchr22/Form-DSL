@@ -17,12 +17,10 @@ import form.formDSL.Length;
 import form.formDSL.LessThan;
 import form.formDSL.LessThanInclusive;
 import form.formDSL.LongText;
-import form.formDSL.Money;
 import form.formDSL.Name;
 import form.formDSL.Not;
 import form.formDSL.Optional;
 import form.formDSL.ShortText;
-import form.formDSL.StringNumber;
 import form.services.FormDSLGrammarAccess;
 import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
@@ -85,9 +83,6 @@ public class FormDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 			case FormDSLPackage.LONG_TEXT:
 				sequence_Type(context, (LongText) semanticObject); 
 				return; 
-			case FormDSLPackage.MONEY:
-				sequence_Type(context, (Money) semanticObject); 
-				return; 
 			case FormDSLPackage.NAME:
 				sequence_Name(context, (Name) semanticObject); 
 				return; 
@@ -99,9 +94,6 @@ public class FormDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 				return; 
 			case FormDSLPackage.SHORT_TEXT:
 				sequence_Type(context, (ShortText) semanticObject); 
-				return; 
-			case FormDSLPackage.STRING_NUMBER:
-				sequence_Type(context, (StringNumber) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -333,25 +325,7 @@ public class FormDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FormDSLPackage.Literals.TYPE__TEXT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getTypeAccess().getTextLongTextKeyword_5_1_0(), semanticObject.getText());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Type returns Money
-	 *
-	 * Constraint:
-	 *     text='money'
-	 */
-	protected void sequence_Type(ISerializationContext context, Money semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, FormDSLPackage.Literals.TYPE__TEXT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FormDSLPackage.Literals.TYPE__TEXT));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getTypeAccess().getTextMoneyKeyword_3_1_0(), semanticObject.getText());
+		feeder.accept(grammarAccess.getTypeAccess().getTextLongTextKeyword_4_1_0(), semanticObject.getText());
 		feeder.finish();
 	}
 	
@@ -370,24 +344,6 @@ public class FormDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getTypeAccess().getTextShortTextKeyword_0_1_0(), semanticObject.getText());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Type returns StringNumber
-	 *
-	 * Constraint:
-	 *     text='stringNumber'
-	 */
-	protected void sequence_Type(ISerializationContext context, StringNumber semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, FormDSLPackage.Literals.TYPE__TEXT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FormDSLPackage.Literals.TYPE__TEXT));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getTypeAccess().getTextStringNumberKeyword_6_1_0(), semanticObject.getText());
 		feeder.finish();
 	}
 	

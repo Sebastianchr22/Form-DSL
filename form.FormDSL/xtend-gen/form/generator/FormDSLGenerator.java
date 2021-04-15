@@ -18,12 +18,10 @@ import form.formDSL.Length;
 import form.formDSL.LessThan;
 import form.formDSL.LessThanInclusive;
 import form.formDSL.LongText;
-import form.formDSL.Money;
 import form.formDSL.Name;
 import form.formDSL.Not;
 import form.formDSL.Optional;
 import form.formDSL.ShortText;
-import form.formDSL.StringNumber;
 import form.formDSL.Type;
 import java.util.Arrays;
 import java.util.List;
@@ -97,16 +95,6 @@ public class FormDSLGenerator extends AbstractGenerator {
     return _builder;
   }
   
-  protected CharSequence _compute(final Money type, final Name name) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<input class=\"");
-    _builder.append(this.formClass);
-    _builder.append("\" type=\"number\" min=\"0.00\" max=\"10000.00\" step=\"0.01\" placeholder=\"0.00\" id=\"");
-    _builder.append(name);
-    _builder.append("\">");
-    return _builder;
-  }
-  
   protected CharSequence _compute(final ShortText type, final Name name) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<input class=\"");
@@ -117,11 +105,6 @@ public class FormDSLGenerator extends AbstractGenerator {
     String _text = name.getText();
     _builder.append(_text);
     _builder.append("\">");
-    return _builder;
-  }
-  
-  protected CharSequence _compute(final StringNumber type, final Name name) {
-    StringConcatenation _builder = new StringConcatenation();
     return _builder;
   }
   
@@ -506,12 +489,8 @@ public class FormDSLGenerator extends AbstractGenerator {
       return _compute((Generic)type, name);
     } else if (type instanceof LongText) {
       return _compute((LongText)type, name);
-    } else if (type instanceof Money) {
-      return _compute((Money)type, name);
     } else if (type instanceof ShortText) {
       return _compute((ShortText)type, name);
-    } else if (type instanceof StringNumber) {
-      return _compute((StringNumber)type, name);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(type, name).toString());

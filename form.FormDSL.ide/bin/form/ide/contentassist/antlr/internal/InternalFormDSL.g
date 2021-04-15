@@ -258,18 +258,6 @@ rule__Type__Alternatives
 		(rule__Type__Group_4__0)
 		{ after(grammarAccess.getTypeAccess().getGroup_4()); }
 	)
-	|
-	(
-		{ before(grammarAccess.getTypeAccess().getGroup_5()); }
-		(rule__Type__Group_5__0)
-		{ after(grammarAccess.getTypeAccess().getGroup_5()); }
-	)
-	|
-	(
-		{ before(grammarAccess.getTypeAccess().getGroup_6()); }
-		(rule__Type__Group_6__0)
-		{ after(grammarAccess.getTypeAccess().getGroup_6()); }
-	)
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -710,9 +698,9 @@ rule__Type__Group_3__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getTypeAccess().getMoneyAction_3_0()); }
+	{ before(grammarAccess.getTypeAccess().getGenericAction_3_0()); }
 	()
-	{ after(grammarAccess.getTypeAccess().getMoneyAction_3_0()); }
+	{ after(grammarAccess.getTypeAccess().getGenericAction_3_0()); }
 )
 ;
 finally {
@@ -764,9 +752,9 @@ rule__Type__Group_4__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getTypeAccess().getGenericAction_4_0()); }
+	{ before(grammarAccess.getTypeAccess().getLongTextAction_4_0()); }
 	()
-	{ after(grammarAccess.getTypeAccess().getGenericAction_4_0()); }
+	{ after(grammarAccess.getTypeAccess().getLongTextAction_4_0()); }
 )
 ;
 finally {
@@ -793,114 +781,6 @@ rule__Type__Group_4__1__Impl
 	{ before(grammarAccess.getTypeAccess().getTextAssignment_4_1()); }
 	(rule__Type__TextAssignment_4_1)
 	{ after(grammarAccess.getTypeAccess().getTextAssignment_4_1()); }
-)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__Type__Group_5__0
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	rule__Type__Group_5__0__Impl
-	rule__Type__Group_5__1
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Type__Group_5__0__Impl
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-(
-	{ before(grammarAccess.getTypeAccess().getLongTextAction_5_0()); }
-	()
-	{ after(grammarAccess.getTypeAccess().getLongTextAction_5_0()); }
-)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Type__Group_5__1
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	rule__Type__Group_5__1__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Type__Group_5__1__Impl
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-(
-	{ before(grammarAccess.getTypeAccess().getTextAssignment_5_1()); }
-	(rule__Type__TextAssignment_5_1)
-	{ after(grammarAccess.getTypeAccess().getTextAssignment_5_1()); }
-)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__Type__Group_6__0
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	rule__Type__Group_6__0__Impl
-	rule__Type__Group_6__1
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Type__Group_6__0__Impl
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-(
-	{ before(grammarAccess.getTypeAccess().getStringNumberAction_6_0()); }
-	()
-	{ after(grammarAccess.getTypeAccess().getStringNumberAction_6_0()); }
-)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Type__Group_6__1
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	rule__Type__Group_6__1__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Type__Group_6__1__Impl
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-(
-	{ before(grammarAccess.getTypeAccess().getTextAssignment_6_1()); }
-	(rule__Type__TextAssignment_6_1)
-	{ after(grammarAccess.getTypeAccess().getTextAssignment_6_1()); }
 )
 ;
 finally {
@@ -1652,13 +1532,13 @@ rule__Type__TextAssignment_3_1
 	}
 :
 	(
-		{ before(grammarAccess.getTypeAccess().getTextMoneyKeyword_3_1_0()); }
+		{ before(grammarAccess.getTypeAccess().getTextEmailKeyword_3_1_0()); }
 		(
-			{ before(grammarAccess.getTypeAccess().getTextMoneyKeyword_3_1_0()); }
-			'money'
-			{ after(grammarAccess.getTypeAccess().getTextMoneyKeyword_3_1_0()); }
+			{ before(grammarAccess.getTypeAccess().getTextEmailKeyword_3_1_0()); }
+			'email'
+			{ after(grammarAccess.getTypeAccess().getTextEmailKeyword_3_1_0()); }
 		)
-		{ after(grammarAccess.getTypeAccess().getTextMoneyKeyword_3_1_0()); }
+		{ after(grammarAccess.getTypeAccess().getTextEmailKeyword_3_1_0()); }
 	)
 ;
 finally {
@@ -1671,51 +1551,13 @@ rule__Type__TextAssignment_4_1
 	}
 :
 	(
-		{ before(grammarAccess.getTypeAccess().getTextEmailKeyword_4_1_0()); }
+		{ before(grammarAccess.getTypeAccess().getTextLongTextKeyword_4_1_0()); }
 		(
-			{ before(grammarAccess.getTypeAccess().getTextEmailKeyword_4_1_0()); }
-			'email'
-			{ after(grammarAccess.getTypeAccess().getTextEmailKeyword_4_1_0()); }
-		)
-		{ after(grammarAccess.getTypeAccess().getTextEmailKeyword_4_1_0()); }
-	)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Type__TextAssignment_5_1
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	(
-		{ before(grammarAccess.getTypeAccess().getTextLongTextKeyword_5_1_0()); }
-		(
-			{ before(grammarAccess.getTypeAccess().getTextLongTextKeyword_5_1_0()); }
+			{ before(grammarAccess.getTypeAccess().getTextLongTextKeyword_4_1_0()); }
 			'longText'
-			{ after(grammarAccess.getTypeAccess().getTextLongTextKeyword_5_1_0()); }
+			{ after(grammarAccess.getTypeAccess().getTextLongTextKeyword_4_1_0()); }
 		)
-		{ after(grammarAccess.getTypeAccess().getTextLongTextKeyword_5_1_0()); }
-	)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Type__TextAssignment_6_1
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	(
-		{ before(grammarAccess.getTypeAccess().getTextStringNumberKeyword_6_1_0()); }
-		(
-			{ before(grammarAccess.getTypeAccess().getTextStringNumberKeyword_6_1_0()); }
-			'stringNumber'
-			{ after(grammarAccess.getTypeAccess().getTextStringNumberKeyword_6_1_0()); }
-		)
-		{ after(grammarAccess.getTypeAccess().getTextStringNumberKeyword_6_1_0()); }
+		{ after(grammarAccess.getTypeAccess().getTextLongTextKeyword_4_1_0()); }
 	)
 ;
 finally {

@@ -30,9 +30,7 @@
     <genClasses ecoreClass="FormDSL.ecore#//Comparison"/>
     <genClasses ecoreClass="FormDSL.ecore#//ShortText"/>
     <genClasses ecoreClass="FormDSL.ecore#//Generic"/>
-    <genClasses ecoreClass="FormDSL.ecore#//Money"/>
     <genClasses ecoreClass="FormDSL.ecore#//LongText"/>
-    <genClasses ecoreClass="FormDSL.ecore#//StringNumber"/>
     <genClasses ecoreClass="FormDSL.ecore#//Optional"/>
     <genClasses ecoreClass="FormDSL.ecore#//Focus"/>
     <genClasses ecoreClass="FormDSL.ecore#//Is"/>

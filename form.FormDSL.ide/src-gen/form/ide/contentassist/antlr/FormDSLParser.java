@@ -42,8 +42,6 @@ public class FormDSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getTypeAccess().getGroup_2(), "rule__Type__Group_2__0");
 			builder.put(grammarAccess.getTypeAccess().getGroup_3(), "rule__Type__Group_3__0");
 			builder.put(grammarAccess.getTypeAccess().getGroup_4(), "rule__Type__Group_4__0");
-			builder.put(grammarAccess.getTypeAccess().getGroup_5(), "rule__Type__Group_5__0");
-			builder.put(grammarAccess.getTypeAccess().getGroup_6(), "rule__Type__Group_6__0");
 			builder.put(grammarAccess.getExpressionAccess().getGroup_0(), "rule__Expression__Group_0__0");
 			builder.put(grammarAccess.getExpressionAccess().getGroup_1(), "rule__Expression__Group_1__0");
 			builder.put(grammarAccess.getExpAccess().getGroup(), "rule__Exp__Group__0");
@@ -64,8 +62,6 @@ public class FormDSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getTypeAccess().getTextAssignment_2_1(), "rule__Type__TextAssignment_2_1");
 			builder.put(grammarAccess.getTypeAccess().getTextAssignment_3_1(), "rule__Type__TextAssignment_3_1");
 			builder.put(grammarAccess.getTypeAccess().getTextAssignment_4_1(), "rule__Type__TextAssignment_4_1");
-			builder.put(grammarAccess.getTypeAccess().getTextAssignment_5_1(), "rule__Type__TextAssignment_5_1");
-			builder.put(grammarAccess.getTypeAccess().getTextAssignment_6_1(), "rule__Type__TextAssignment_6_1");
 			builder.put(grammarAccess.getNameAccess().getTextAssignment(), "rule__Name__TextAssignment");
 			builder.put(grammarAccess.getExpressionAccess().getTextAssignment_0_1(), "rule__Expression__TextAssignment_0_1");
 			builder.put(grammarAccess.getExpressionAccess().getTextAssignment_1_1(), "rule__Expression__TextAssignment_1_1");

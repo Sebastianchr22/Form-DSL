@@ -28,9 +28,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Comparison"/>
   <eClassifiers xsi:type="ecore:EClass" name="ShortText" eSuperTypes="#//Type"/>
   <eClassifiers xsi:type="ecore:EClass" name="Generic" eSuperTypes="#//Type"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Money" eSuperTypes="#//Type"/>
   <eClassifiers xsi:type="ecore:EClass" name="LongText" eSuperTypes="#//Type"/>
-  <eClassifiers xsi:type="ecore:EClass" name="StringNumber" eSuperTypes="#//Type"/>
   <eClassifiers xsi:type="ecore:EClass" name="Optional" eSuperTypes="#//Expression"/>
   <eClassifiers xsi:type="ecore:EClass" name="Focus" eSuperTypes="#//Expression"/>
   <eClassifiers xsi:type="ecore:EClass" name="Is" eSuperTypes="#//Exp"/>

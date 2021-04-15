@@ -121,19 +121,9 @@ public class FormDSLAdapterFactory extends AdapterFactoryImpl
         return createGenericAdapter();
       }
       @Override
-      public Adapter caseMoney(Money object)
-      {
-        return createMoneyAdapter();
-      }
-      @Override
       public Adapter caseLongText(LongText object)
       {
         return createLongTextAdapter();
-      }
-      @Override
-      public Adapter caseStringNumber(StringNumber object)
-      {
-        return createStringNumberAdapter();
       }
       @Override
       public Adapter caseOptional(Optional object)
@@ -343,21 +333,6 @@ public class FormDSLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link form.formDSL.Money <em>Money</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see form.formDSL.Money
-   * @generated
-   */
-  public Adapter createMoneyAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link form.formDSL.LongText <em>Long Text</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -368,21 +343,6 @@ public class FormDSLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createLongTextAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link form.formDSL.StringNumber <em>String Number</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see form.formDSL.StringNumber
-   * @generated
-   */
-  public Adapter createStringNumberAdapter()
   {
     return null;
   }

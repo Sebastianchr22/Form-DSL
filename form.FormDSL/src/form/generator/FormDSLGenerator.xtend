@@ -14,8 +14,6 @@ import form.formDSL.Type
 import form.formDSL.Expression
 import form.formDSL.Generic
 import form.formDSL.LongText
-import form.formDSL.Money
-import form.formDSL.StringNumber
 import form.formDSL.ShortText
 import form.formDSL.Optional
 import form.formDSL.Focus
@@ -59,14 +57,8 @@ class FormDSLGenerator extends AbstractGenerator {
 	def dispatch CharSequence compute(LongText type, Name name) {
 		'''<textarea class="«formClass»" id="«name»" rows="8" cols="50" placeholder="«name.text»"></textarea>'''
 	}
-	def dispatch CharSequence compute(Money type, Name name) {
-		'''<input class="«formClass»" type="number" min="0.00" max="10000.00" step="0.01" placeholder="0.00" id="«name»">'''
-	}
 	def dispatch CharSequence compute(ShortText type, Name name) {
 		'''<input class="«formClass»" type="text" id="«name»" placeholder="«name.text»">'''
-	}
-	def dispatch CharSequence compute(StringNumber type, Name name) {
-		''''''
 	}
 	def dispatch CharSequence compute(Name name) {
 		name.text

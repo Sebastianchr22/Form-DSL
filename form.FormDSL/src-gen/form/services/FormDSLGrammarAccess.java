@@ -105,29 +105,21 @@ public class FormDSLGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final Assignment cTextAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
 		private final Keyword cTextNumberKeyword_2_1_0 = (Keyword)cTextAssignment_2_1.eContents().get(0);
 		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
-		private final Action cMoneyAction_3_0 = (Action)cGroup_3.eContents().get(0);
+		private final Action cGenericAction_3_0 = (Action)cGroup_3.eContents().get(0);
 		private final Assignment cTextAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final Keyword cTextMoneyKeyword_3_1_0 = (Keyword)cTextAssignment_3_1.eContents().get(0);
+		private final Keyword cTextEmailKeyword_3_1_0 = (Keyword)cTextAssignment_3_1.eContents().get(0);
 		private final Group cGroup_4 = (Group)cAlternatives.eContents().get(4);
-		private final Action cGenericAction_4_0 = (Action)cGroup_4.eContents().get(0);
+		private final Action cLongTextAction_4_0 = (Action)cGroup_4.eContents().get(0);
 		private final Assignment cTextAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final Keyword cTextEmailKeyword_4_1_0 = (Keyword)cTextAssignment_4_1.eContents().get(0);
-		private final Group cGroup_5 = (Group)cAlternatives.eContents().get(5);
-		private final Action cLongTextAction_5_0 = (Action)cGroup_5.eContents().get(0);
-		private final Assignment cTextAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
-		private final Keyword cTextLongTextKeyword_5_1_0 = (Keyword)cTextAssignment_5_1.eContents().get(0);
-		private final Group cGroup_6 = (Group)cAlternatives.eContents().get(6);
-		private final Action cStringNumberAction_6_0 = (Action)cGroup_6.eContents().get(0);
-		private final Assignment cTextAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
-		private final Keyword cTextStringNumberKeyword_6_1_0 = (Keyword)cTextAssignment_6_1.eContents().get(0);
+		private final Keyword cTextLongTextKeyword_4_1_0 = (Keyword)cTextAssignment_4_1.eContents().get(0);
 		
 		//Type:
-		//	{ShortText} text="shortText" | {Generic} text="date" | {Generic} text="number" | {Money} text="money" | {Generic} text=
-		//	"email" | {LongText} text="longText" | {StringNumber} text="stringNumber";
+		//	{ShortText} text="shortText" | {Generic} text="date" | {Generic} text="number" | {Generic} text="email" | {LongText}
+		//	text="longText";
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{ShortText} text="shortText" | {Generic} text="date" | {Generic} text="number" | {Money} text="money" | {Generic} text=
-		//"email" | {LongText} text="longText" | {StringNumber} text="stringNumber"
+		//{ShortText} text="shortText" | {Generic} text="date" | {Generic} text="number" | {Generic} text="email" | {LongText} text=
+		//"longText"
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//{ShortText} text="shortText"
@@ -166,53 +158,29 @@ public class FormDSLGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//"number"
 		public Keyword getTextNumberKeyword_2_1_0() { return cTextNumberKeyword_2_1_0; }
 		
-		//{Money} text="money"
+		//{Generic} text="email"
 		public Group getGroup_3() { return cGroup_3; }
 		
-		//{Money}
-		public Action getMoneyAction_3_0() { return cMoneyAction_3_0; }
-		
-		//text="money"
-		public Assignment getTextAssignment_3_1() { return cTextAssignment_3_1; }
-		
-		//"money"
-		public Keyword getTextMoneyKeyword_3_1_0() { return cTextMoneyKeyword_3_1_0; }
-		
-		//{Generic} text="email"
-		public Group getGroup_4() { return cGroup_4; }
-		
 		//{Generic}
-		public Action getGenericAction_4_0() { return cGenericAction_4_0; }
+		public Action getGenericAction_3_0() { return cGenericAction_3_0; }
 		
 		//text="email"
-		public Assignment getTextAssignment_4_1() { return cTextAssignment_4_1; }
+		public Assignment getTextAssignment_3_1() { return cTextAssignment_3_1; }
 		
 		//"email"
-		public Keyword getTextEmailKeyword_4_1_0() { return cTextEmailKeyword_4_1_0; }
+		public Keyword getTextEmailKeyword_3_1_0() { return cTextEmailKeyword_3_1_0; }
 		
 		//{LongText} text="longText"
-		public Group getGroup_5() { return cGroup_5; }
+		public Group getGroup_4() { return cGroup_4; }
 		
 		//{LongText}
-		public Action getLongTextAction_5_0() { return cLongTextAction_5_0; }
+		public Action getLongTextAction_4_0() { return cLongTextAction_4_0; }
 		
 		//text="longText"
-		public Assignment getTextAssignment_5_1() { return cTextAssignment_5_1; }
+		public Assignment getTextAssignment_4_1() { return cTextAssignment_4_1; }
 		
 		//"longText"
-		public Keyword getTextLongTextKeyword_5_1_0() { return cTextLongTextKeyword_5_1_0; }
-		
-		//{StringNumber} text="stringNumber"
-		public Group getGroup_6() { return cGroup_6; }
-		
-		//{StringNumber}
-		public Action getStringNumberAction_6_0() { return cStringNumberAction_6_0; }
-		
-		//text="stringNumber"
-		public Assignment getTextAssignment_6_1() { return cTextAssignment_6_1; }
-		
-		//"stringNumber"
-		public Keyword getTextStringNumberKeyword_6_1_0() { return cTextStringNumberKeyword_6_1_0; }
+		public Keyword getTextLongTextKeyword_4_1_0() { return cTextLongTextKeyword_4_1_0; }
 	}
 	public class NameElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "form.FormDSL.Name");
@@ -510,8 +478,8 @@ public class FormDSLGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 	}
 	
 	//Type:
-	//	{ShortText} text="shortText" | {Generic} text="date" | {Generic} text="number" | {Money} text="money" | {Generic} text=
-	//	"email" | {LongText} text="longText" | {StringNumber} text="stringNumber";
+	//	{ShortText} text="shortText" | {Generic} text="date" | {Generic} text="number" | {Generic} text="email" | {LongText}
+	//	text="longText";
 	public TypeElements getTypeAccess() {
 		return pType;
 	}

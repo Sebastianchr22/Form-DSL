@@ -16,10 +16,8 @@ Type:
 	{ShortText} text="shortText" | 
 	{Generic} text="date" | 
 	{Generic} text="number" | 
-	{Money} text="money" | 
 	{Generic} text="email" | 
-	{LongText} text="longText" | 
-	{StringNumber} text="stringNumber"
+	{LongText} text="longText"
 ;
 
 Name: 

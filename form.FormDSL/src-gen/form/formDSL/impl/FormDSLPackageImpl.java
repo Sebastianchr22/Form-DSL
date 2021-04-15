@@ -20,12 +20,10 @@ import form.formDSL.Length;
 import form.formDSL.LessThan;
 import form.formDSL.LessThanInclusive;
 import form.formDSL.LongText;
-import form.formDSL.Money;
 import form.formDSL.Name;
 import form.formDSL.Not;
 import form.formDSL.Optional;
 import form.formDSL.ShortText;
-import form.formDSL.StringNumber;
 import form.formDSL.Type;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -111,21 +109,7 @@ public class FormDSLPackageImpl extends EPackageImpl implements FormDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass moneyEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass longTextEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass stringNumberEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -464,31 +448,9 @@ public class FormDSLPackageImpl extends EPackageImpl implements FormDSLPackage
    * @generated
    */
   @Override
-  public EClass getMoney()
-  {
-    return moneyEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EClass getLongText()
   {
     return longTextEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getStringNumber()
-  {
-    return stringNumberEClass;
   }
 
   /**
@@ -659,11 +621,7 @@ public class FormDSLPackageImpl extends EPackageImpl implements FormDSLPackage
 
     genericEClass = createEClass(GENERIC);
 
-    moneyEClass = createEClass(MONEY);
-
     longTextEClass = createEClass(LONG_TEXT);
-
-    stringNumberEClass = createEClass(STRING_NUMBER);
 
     optionalEClass = createEClass(OPTIONAL);
 
@@ -718,9 +676,7 @@ public class FormDSLPackageImpl extends EPackageImpl implements FormDSLPackage
     expEClass.getESuperTypes().add(this.getExpression());
     shortTextEClass.getESuperTypes().add(this.getType());
     genericEClass.getESuperTypes().add(this.getType());
-    moneyEClass.getESuperTypes().add(this.getType());
     longTextEClass.getESuperTypes().add(this.getType());
-    stringNumberEClass.getESuperTypes().add(this.getType());
     optionalEClass.getESuperTypes().add(this.getExpression());
     focusEClass.getESuperTypes().add(this.getExpression());
     isEClass.getESuperTypes().add(this.getExp());
@@ -760,11 +716,7 @@ public class FormDSLPackageImpl extends EPackageImpl implements FormDSLPackage
 
     initEClass(genericEClass, Generic.class, "Generic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(moneyEClass, Money.class, "Money", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
     initEClass(longTextEClass, LongText.class, "LongText", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(stringNumberEClass, StringNumber.class, "StringNumber", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(optionalEClass, Optional.class, "Optional", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

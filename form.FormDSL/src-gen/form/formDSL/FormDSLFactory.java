@@ -105,15 +105,6 @@ public interface FormDSLFactory extends EFactory
   Generic createGeneric();
 
   /**
-   * Returns a new object of class '<em>Money</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Money</em>'.
-   * @generated
-   */
-  Money createMoney();
-
-  /**
    * Returns a new object of class '<em>Long Text</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -121,15 +112,6 @@ public interface FormDSLFactory extends EFactory
    * @generated
    */
   LongText createLongText();
-
-  /**
-   * Returns a new object of class '<em>String Number</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>String Number</em>'.
-   * @generated
-   */
-  StringNumber createStringNumber();
 
   /**
    * Returns a new object of class '<em>Optional</em>'.
