@@ -154,7 +154,7 @@ public class FormDSLGenerator extends AbstractGenerator {
     _builder.append("<br>");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("<input type=\"submit\" class=\"btn btn-primary\" value=\"Submit\" onclick=\"submitHandler(event)\">");
+    _builder.append("<input type=\"submit\" class=\"btn btn-primary\" value=\"Submit\">");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("<p style=\"color:red\" id=\"error_output\"></p>");
@@ -219,7 +219,7 @@ public class FormDSLGenerator extends AbstractGenerator {
     _builder.append("document.getElementById(\"error_output\").innerHTML = \"\'");
     String _text_1 = name.getText();
     _builder.append(_text_1, "\t");
-    _builder.append("\' field was incorrent, \'");
+    _builder.append("\' field was incorrect, \'");
     String _text_2 = name.getText();
     _builder.append(_text_2, "\t");
     _builder.append("\' must be ");
@@ -235,12 +235,49 @@ public class FormDSLGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
+    _builder.newLine();
     return _builder;
   }
   
   protected CharSequence _handleExp(final Length exp, final Name name) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("size");
+    _builder.append("if(!(document.getElementById(\"");
+    _builder.append(name);
+    _builder.append("\").value.length ");
+    CharSequence _compText = this.getCompText(exp.getComp());
+    _builder.append(_compText);
+    _builder.append(" ");
+    int _value = exp.getValue();
+    _builder.append(_value);
+    _builder.append(")){");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("console.log(\"");
+    String _text = name.getText();
+    _builder.append(_text, "\t");
+    _builder.append(" property failed: \" + document.getElementById(\"");
+    _builder.append(name, "\t");
+    _builder.append("\").value.length);");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("document.getElementById(\"error_output\").innerHTML = \"\'");
+    String _text_1 = name.getText();
+    _builder.append(_text_1, "\t");
+    _builder.append("\' field was wrong, \'");
+    String _text_2 = name.getText();
+    _builder.append(_text_2, "\t");
+    _builder.append("\' length must be ");
+    CharSequence _compText_1 = this.getCompText(exp.getComp());
+    _builder.append(_compText_1, "\t");
+    _builder.append(" ");
+    int _value_1 = exp.getValue();
+    _builder.append(_value_1, "\t");
+    _builder.append("\";");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("failedProperty = true;");
+    _builder.newLine();
+    _builder.append("}");
     _builder.newLine();
     return _builder;
   }

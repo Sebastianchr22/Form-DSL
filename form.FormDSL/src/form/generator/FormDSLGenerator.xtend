@@ -86,7 +86,7 @@ class FormDSLGenerator extends AbstractGenerator {
 					«input.compute»
 				«ENDFOR»
 				<br>
-				<input type="submit" class="btn btn-primary" value="Submit" onclick="submitHandler(event)">
+				<input type="submit" class="btn btn-primary" value="Submit">
 				<p style="color:red" id="error_output"></p>
 			</form>
 			
@@ -113,15 +113,22 @@ class FormDSLGenerator extends AbstractGenerator {
 		'''
 		if(!(document.getElementById("«name»").value «exp.comp.getCompText» «exp.value»)){
 			console.log("«name.text» property failed: " + document.getElementById("«name»").value);
-			document.getElementById("error_output").innerHTML = "'«name.text»' field was incorrent, '«name.text»' must be «exp.comp.getCompText» «exp.value»";
+			document.getElementById("error_output").innerHTML = "'«name.text»' field was incorrect, '«name.text»' must be «exp.comp.getCompText» «exp.value»";
 			failedProperty = true;
 		}
+		
 		'''
 		//Find a way to generate simple verification method in JS for this property related to the input.
 	}
+	
+	
 	def dispatch CharSequence handleExp(Length exp, Name name){
 		'''
-		size
+		if(!(document.getElementById("«name»").value.length «exp.comp.getCompText» «exp.value»)){
+			console.log("«name.text» property failed: " + document.getElementById("«name»").value.length);
+			document.getElementById("error_output").innerHTML = "'«name.text»' field was wrong, '«name.text»' length must be «exp.comp.getCompText» «exp.value»";
+			failedProperty = true;
+		}
 		'''
 	}
 

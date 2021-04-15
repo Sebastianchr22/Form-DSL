@@ -17,6 +17,18 @@ import form.formDSL.LongText
 import form.formDSL.Money
 import form.formDSL.StringNumber
 import form.formDSL.ShortText
+import form.formDSL.Optional
+import form.formDSL.Focus
+import form.formDSL.Length
+import form.formDSL.Is
+import form.formDSL.GreaterThanInclusive
+import form.formDSL.Comparison
+import form.formDSL.LessThanInclusive
+import form.formDSL.LessThan
+import form.formDSL.GreaterThan
+import form.formDSL.Exactly
+import form.formDSL.Not
+import java.util.List
 
 /**
  * Generates code from your model files on save.
@@ -25,62 +37,57 @@ import form.formDSL.ShortText
  */
 class FormDSLGenerator extends AbstractGenerator {
 
+	var formClass = "form-control form-control-sm"
+	var isRequired = true;
+	var hasFocus = false;
+	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		val form = resource.allContents.filter(Form).next
 		fsa.generateFile("someFile.html", form.compileClass);
 	}
 
 	def dispatch CharSequence compute(Input input) {
-		for (Expression exp : input.expression) {
-			System::out.println(exp.text)
-		}
 		'''
 			<label class="form-label">«input.name.compute»:</label>
 			«compute(input.type, input.name)»
 		'''
 	}
 
-	var formClass = "form-control form-control-sm"
-
 	def dispatch CharSequence compute(Generic type, Name name) {
 		'''<input class="«formClass»" type="«type.text»" id="«name»" placeholder="«name.text»">'''
 	}
-
 	def dispatch CharSequence compute(LongText type, Name name) {
 		'''<textarea class="«formClass»" id="«name»" rows="8" cols="50" placeholder="«name.text»"></textarea>'''
 	}
-
 	def dispatch CharSequence compute(Money type, Name name) {
 		'''<input class="«formClass»" type="number" min="0.00" max="10000.00" step="0.01" placeholder="0.00" id="«name»">'''
 	}
-
 	def dispatch CharSequence compute(ShortText type, Name name) {
 		'''<input class="«formClass»" type="text" id="«name»" placeholder="«name.text»">'''
 	}
-
 	def dispatch CharSequence compute(StringNumber type, Name name) {
 		''''''
 	}
-
 	def dispatch CharSequence compute(Name name) {
 		name.text
 	}
-
 	def dispatch String compute(Type type) {
 		type.text
 	}
+
+
 
 	def CharSequence compileClass(Form form) {
 		'''
 			«startHTML()»
 			
-			<form>
+			<form onSubmit="submitHandler(event)">
 				«FOR input : form.content»
 					«input.compute»
-					«input.handleOptional»
 				«ENDFOR»
 				<br>
-				<input type="submit" class="btn btn-primary" value="Submit" onClick="submitHandler()">
+				<input type="submit" class="btn btn-primary" value="Submit">
+				<p style="color:red" id="error_output"></p>
 			</form>
 			
 			«form.compilejs»
@@ -88,46 +95,104 @@ class FormDSLGenerator extends AbstractGenerator {
 		'''
 	}
 
-	def CharSequence compilejs(Form form) {
+
+
+	def dispatch CharSequence handleExp(Optional exp, Name name){
+		isRequired = false
 		'''
-			<script>
-			function submitHandler(){
-				//When submit
-					//foreach expression
-						//Is hold?
-					//If all is hold
-						//Submit
-					//Else
-						//(Give error)?
-			}
-			
-			</script>
+		
+		'''
+	}
+	def dispatch CharSequence handleExp(Focus exp, Name name){
+		hasFocus = true
+		'''
+		
+		'''
+	}
+	def dispatch CharSequence handleExp(Is exp, Name name){
+		'''
+		if(!(document.getElementById("«name»").value «exp.comp.getCompText» «exp.value»)){
+			console.log("«name.text» property failed: " + document.getElementById("«name»").value);
+			document.getElementById("error_output").innerHTML = "'«name.text»' field was incorrect, '«name.text»' must be «exp.comp.getCompText» «exp.value»";
+			failedProperty = true;
+		}
+		
+		'''
+		//Find a way to generate simple verification method in JS for this property related to the input.
+	}
+	
+	
+	def dispatch CharSequence handleExp(Length exp, Name name){
+		'''
+		if(!(document.getElementById("«name»").value.length «exp.comp.getCompText» «exp.value»)){
+			console.log("«name.text» property failed: " + document.getElementById("«name»").value.length);
+			document.getElementById("error_output").innerHTML = "'«name.text»' field was wrong, '«name.text»' length must be «exp.comp.getCompText» «exp.value»";
+			failedProperty = true;
+		}
 		'''
 	}
 
-	def CharSequence handleOptional(Input input) {
-		var required = true;
-		var focus = false
-		'''
-			«FOR exp : input.expression»
-				«IF exp == "optional"»
-					«required=false»
-				«ELSEIF exp == "focus"»
-					«focus=true»
-				«ENDIF»
-				«ENDFOR»
-				«IF required»
-					<script>
-					document.getElementById("«input.name»").setAttribute("required", "required");
-					</script>
-				«ENDIF»
-				«IF focus»
-					<script>
-					document.getElementById("«input.name»").setAttribute("autofocus", "autofocus");
-					</script>
-				«ENDIF»
-		'''
+	
+	def dispatch CharSequence getCompText(GreaterThan comp) {
+		'''>'''
+	}
+	def dispatch CharSequence getCompText(GreaterThanInclusive comp) {
+		'''>='''
+	}
+	def dispatch CharSequence getCompText(LessThan comp) {
+		'''<'''
+	}
+	def dispatch CharSequence getCompText(LessThanInclusive comp) {
+		'''<='''
+	}
+	def dispatch CharSequence getCompText(Exactly comp) {
+		'''=='''
+	}
+	def dispatch CharSequence getCompText(Not comp) {
+		'''!='''
+	}
 
+	var List<String> validators = newArrayList
+	def CharSequence compilejs(Form form) {
+		'''
+			<script>
+			//Set focus and required attributes to inputs
+			«FOR input : form.content»
+				«FOR exp : input.expression»
+					«isRequired = true»
+					«hasFocus = false»
+					//«validators.add(exp.handleExp(input.name).toString)»
+				«ENDFOR»
+
+				«IF isRequired»
+					document.getElementById("«input.name»").required = true;
+				«ENDIF»
+				«IF hasFocus»
+					document.getElementById("«input.name»").focus();
+				«ENDIF»
+			«ENDFOR»
+			
+			function submitHandler(e){
+				console.log("Called submit!");
+				var failedProperty = false;
+				//When submit
+					//foreach expression
+					«FOR validation : validators»
+						«validation»
+					«ENDFOR»
+					if (failedProperty){
+						console.log("Form has failed properties...");
+						e.preventDefault();
+						return false;
+					}else{
+						//Submit
+						document.getElementById("error_output").innerHTML = ""
+						console.log("Submit!");
+						return true;
+					}
+			}
+			</script>
+		'''
 	}
 
 	def CharSequence startHTML() {
